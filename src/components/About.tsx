@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 function About() {
-  const projectsRef = useRef(null);
+  const ProjectsRef = useRef(null);
 
   const scrollToContent = () => {
     document.getElementById('reach')?.scrollIntoView({ behavior: 'smooth' });
@@ -97,16 +97,15 @@ function About() {
         }
 
         .experience-container {
-          max-width: 1200px;
+          background-color : white;
           width: 100%;
-          margin: 80px auto;
           padding: 0 20px;
         }
 
         .experience-item {
           background-color: white;
           padding: 40px;
-          margin-bottom: 30px;
+          margin-bottom: 5px;
           border-radius: 15px;
           box-shadow: 0 4px 20px rgba(0,0,0,0.1);
           transition: all 0.3s ease;
@@ -163,14 +162,13 @@ function About() {
           color: white;
           border: none;
           border-radius: 50%;
-          width: 60px;
-          height: 60px;
+          width: 50px;
+          height: 50px;
           cursor: pointer;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
           z-index: 1000;
-          font-size: 24px;
-          font-weight: bold;
+
         }
 
         .back-to-top:hover {

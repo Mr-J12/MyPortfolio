@@ -92,8 +92,6 @@ function Skills() {
         }
 
         .skills-container {
-          max-width: 1200px;
-          margin: 80px auto;
           padding: 0 20px;
           background-color : white;
         }
@@ -101,7 +99,7 @@ function Skills() {
         .skill-category {
           background-color: white;
           padding: 40px;
-          margin-bottom: 30px;
+          margin-bottom: 5px;
           border-radius: 10px;
           box-shadow: 0 2px 15px rgba(0,0,0,0.1);
           transition: transform 0.3s ease, box-shadow 0.3s ease;

@@ -91,15 +91,14 @@ function Projects() {
         }
 
         .projects-container {
-          max-width: 1200px;
-          margin: 80px auto;
+          background-color: white;
           padding: 0 20px;
         }
 
         .project-item {
           display: flex;
           background-color: white;
-          margin-bottom: 40px;
+          margin-bottom: 5px;
           border-radius: 10px;
           overflow: hidden;
           box-shadow: 0 2px 15px rgba(0,0,0,0.1);
@@ -140,9 +139,8 @@ function Projects() {
         }
 
         .project-details {
-          padding: 40px;
+          padding: 20px;
           flex: 1;
-          display: flex;
           flex-direction: column;
           justify-content: center;
         }

@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 
 function Home() {
-  const skillsRef = useRef(null);
+  const HomeRef = useRef(null);
+
   const scrollToContent = () => {
     document.getElementById('reach').scrollIntoView({ behavior: 'smooth' });
   };
@@ -39,8 +40,7 @@ function Home() {
           margin: 0;
           padding: 0;
           position: relative;
-          background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), 
-                      url('src/assets/12.jpg');
+          background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url('src/assets/12.jpg');
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
@@ -87,7 +87,7 @@ function Home() {
         }
 
         .wrapper {
-          padding: 80px 10%;
+          padding: 40px 10%;
           background-color: white;
         }
 
