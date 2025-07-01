@@ -16,7 +16,6 @@ function Skills() {
             bars.forEach((bar, index) => {
               setTimeout(() => {
                 const progress = bar.getAttribute('data-progress');
-                // Set CSS custom property for the ::before pseudo-element
                 bar.style.setProperty('--progress-width', progress + '%');
               }, index * 150); 
             });
@@ -37,11 +36,19 @@ function Skills() {
     <>
       <style jsx>{`
         header {
-          width: 100%;
+          width: 100vw;
           height: 100vh;
-          background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url('/src/assets/51.jpg');
+          margin: 0;
+          padding: 0;
+          position: relative;
+          background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), 
+                      url('src/assets/51.jpg');
           background-size: cover;
           background-position: center;
+          background-attachment: fixed;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .h-text {
@@ -88,6 +95,7 @@ function Skills() {
           max-width: 1200px;
           margin: 80px auto;
           padding: 0 20px;
+          background-color : white;
         }
 
         .skill-category {

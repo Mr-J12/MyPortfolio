@@ -34,11 +34,19 @@ function Home() {
     <><>
       <style>{`
         header {
-          width: 100%;
+          width: 100vw;
           height: 100vh;
-          background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url('/src/assets/12.jpg');
+          margin: 0;
+          padding: 0;
+          position: relative;
+          background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), 
+                      url('src/assets/12.jpg');
           background-size: cover;
           background-position: center;
+          background-attachment: fixed;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .h-text {
@@ -161,7 +169,24 @@ function Home() {
           transform: translateY(-3px);
           box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
         }
-
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .experience-item {
+            padding: 30px 20px;
+          }
+          
+          .experience-item h2 {
+            font-size: 24px;
+          }
+          
+          .experience-item h3 {
+            font-size: 18px;
+          }
+          
+          .experience-item ul li {
+            font-size: 16px;
+          }
+        }
       `}</style>
 
       <header>
