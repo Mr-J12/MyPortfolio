@@ -7,30 +7,32 @@ function Skills() {
     document.getElementById('reach')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const bars = entry.target.querySelectorAll('.progress-bar');
-            bars.forEach((bar, index) => {
-              setTimeout(() => {
-                const progress = bar.getAttribute('data-progress');
-                bar.style.setProperty('--progress-width', progress + '%');
-              }, index * 150); 
-            });
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const bars = entry.target.querySelectorAll('.progress-bar');
+          bars.forEach((bar, index) => {
+            setTimeout(() => {
+              const progress = bar.getAttribute('data-progress');
+              if (progress) {
+                bar.classList.add('animate');
+              }
+            }, index * 150);
+          });
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
 
-    if (skillsRef.current) {
-      observer.observe(skillsRef.current);
-    }
+  if (skillsRef.current) {
+    observer.observe(skillsRef.current);
+  }
 
-    return () => observer.disconnect();
-  }, []);
+  return () => observer.disconnect();
+}, []);
 
   return (
     <>

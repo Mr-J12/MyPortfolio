@@ -7,29 +7,33 @@ function Projects() {
     document.getElementById('reach')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
 
-    const projectItems = document.querySelectorAll('.project-item');
-    projectItems.forEach((item, index) => {
-      item.style.opacity = '0'; 
+  const projectItems = document.querySelectorAll('.project-item');
+  projectItems.forEach((item, index) => {
+    if (item instanceof HTMLElement) {
+      item.style.opacity = '0';
       item.style.transform = 'translateY(50px)';
       item.style.transition = `all 0.6s ease ${index * 0.2}s`;
       observer.observe(item);
-    });
+    }
+  });
 
-    return () => observer.disconnect();
-  }, []);
+  return () => {
+    projectItems.forEach(item => observer.unobserve(item));
+  };
+}, []);
 
   return (
     <>
