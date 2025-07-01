@@ -1,10 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect,} from 'react';
 
 function Home() {
-  const HomeRef = useRef(null);
 
   const scrollToContent = () => {
-    document.getElementById('reach').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('reach')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {

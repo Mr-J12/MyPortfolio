@@ -33,7 +33,7 @@ function Projects() {
 
   return (
     <>
-      <style jsx>{`
+      <style>{`
         header {
           width: 100vw;
           height: 100vh;
