@@ -191,7 +191,7 @@ function Home() {
 
       <header>
         <section className="h-text">
-          <span>Junior/Entry-Level Developer</span>
+          <span>Front-End-Developer</span>
           <h1>Creating Digital Solutions<br />That Matter</h1>
           <button id="scrollButton" onClick={scrollToContent}>View My Work</button>
         </section>
@@ -201,9 +201,9 @@ function Home() {
         <div className="wrapper">
           <h2>About Me</h2>
           <p>
-            I'm a driven BCA student from New Delhi with hands-on programming experience across multiple languages including Java, C++, and web technologies. <br />
+            I'm a driven BCA student from New Delhi with hands-on programming experience across multiple languages including Java, C++, and web technologies 
             which brings practical industry exposure through the freelance testing role with Microsoft and has developed diverse projects ranging from travel blogs to AI-based spam detection systems. <br />
-            my technical skills are complemented by creative interests in video editing, music production, and AI image generation. <br />
+            My technical skills are complemented by creative interests in video editing, music production, and AI image generation. 
             While still early in career, I strong demonstrates learning ability and initiative, though he would benefit from building more substantial professional experience and quantifying his technical achievements.
           </p>
         </div>
