@@ -1,0 +1,70 @@
+nav {
+  width: 100%;
+  height: auto;
+  color: #4CAF50;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  background-color: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  color: #fff;
+  transition: text-shadow 0.3s ease;
+}
+nav:hover {
+  text-shadow: 
+  0 0 5px #1eca1e,
+    0 0 10px #000000,
+    0 0 15px #00d000,
+    0 0 20px #ffffff;;
+}
+.logo {
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #76e77a;
+}
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.menu a:after {
+  content: "";
+  position: absolute;
+  background-color: #5ee262;
+  height: 2px;
+  width: 0;
+  left: 0;
+  bottom: 0;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #4CAF50;
+}
+
+.menu a:hover:after {
+  width: 100%;
+}
+
+.contact a {
+  color: #4CAF50;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.contact a:hover {
+  background-color: #4CAF50;
+  color: white;
+}
