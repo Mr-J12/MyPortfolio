@@ -7,32 +7,37 @@ function Skills() {
     document.getElementById('reach')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const bars = entry.target.querySelectorAll('.progress-bar');
-          bars.forEach((bar, index) => {
-            setTimeout(() => {
-              const progress = bar.getAttribute('data-progress');
-              if (progress) {
-                bar.classList.add('animate');
-              }
-            }, index * 150);
-          });
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const bars = entry.target.querySelectorAll('.progress-bar');
+            bars.forEach((bar, index) => {
+              setTimeout(() => {
+                const progress = bar.getAttribute('data-progress');
+                if (progress) {
+                  const el = bar as HTMLElement;
+                  bar.classList.add('animate');
+                  el.style.setProperty('--progress-width', `${progress}%`);
 
-  if (skillsRef.current) {
-    observer.observe(skillsRef.current);
-  }
+                  const label = el.querySelector('.progress-label') as HTMLElement | null;
+                  if (label) label.textContent = `${progress}%`;
+                }
+              }, index * 150);
+            });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
 
-  return () => observer.disconnect();
-}, []);
+    if (skillsRef.current) {
+      observer.observe(skillsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -95,7 +100,7 @@ useEffect(() => {
 
         .skills-container {
           padding: 0 20px;
-          background-color : white;
+          background-color: white;
         }
 
         .skill-category {
@@ -184,27 +189,48 @@ useEffect(() => {
           top: 0;
           left: 0;
           height: 100%;
-          background: linear-gradient(90deg, #9C27B0, #E1BEE7);
           width: var(--progress-width, 0%);
+          background: linear-gradient(90deg, #9C27B0, #E1BEE7);
           transition: width 1.2s ease-in-out;
           border-radius: 5px;
+          z-index: 1;
         }
 
         .progress-bar::after {
           content: '';
           position: absolute;
           top: 0;
-          left: 0;
+          left: -40%;
           height: 100%;
-          width: var(--progress-width, 0%);
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+          width: 40%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+          );
           animation: shine 2s infinite;
           border-radius: 5px;
+          z-index: 2;
+        }
+
+        .progress-label {
+          position: absolute;
+          top: -20px;
+          right: 0;
+          font-size: 12px;
+          font-weight: bold;
+          color: #9C27B0;
+          z-index: 3;
         }
 
         @keyframes shine {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
+          0% {
+            left: -40%;
+          }
+          100% {
+            left: 100%;
+          }
         }
 
         .skill-level {
@@ -240,16 +266,16 @@ useEffect(() => {
           .h-text h1 {
             font-size: 2.5em;
           }
-          
+
           .skills-container {
             margin: 40px auto;
             padding: 0 15px;
           }
-          
+
           .skill-category {
             padding: 25px;
           }
-          
+
           .skills-grid {
             grid-template-columns: 1fr;
             gap: 20px;
@@ -268,129 +294,61 @@ useEffect(() => {
       </header>
 
       <div id="reach" ref={skillsRef} className="skills-container">
-        <section className="skill-category">
-          <h2>Frontend Development</h2>
-          <div className="skills-grid">
-            <div className="skill-item">
-              <h3>
-                HTML/CSS
-                <span className="skill-percentage">95%</span>
-              </h3>
-              <div className="progress-bar" data-progress="95"></div>
-              <div className="skill-level">Expert Level</div>
+        {[
+          {
+            category: 'Frontend Development',
+            skills: [
+              { name: 'HTML/CSS', level: 'Expert Level', value: 95 },
+              { name: 'Javascript', level: 'Intermediate Level', value: 70 },
+              { name: 'React.js', level: 'Basic Level', value: 60 },
+            ],
+          },
+          {
+            category: 'Backend Development',
+            skills: [
+              { name: 'Node.js', level: 'Advanced Level', value: 80 },
+              { name: 'Python', level: 'Advanced Level', value: 80 },
+              { name: 'PHP', level: 'Advanced Level', value: 75 },
+            ],
+          },
+          {
+            category: 'Databases',
+            skills: [
+              { name: 'SQL', level: 'Expert Level', value: 90 },
+              { name: 'MariaDB', level: 'Advanced Level', value: 80 },
+              { name: 'MongoDB', level: 'Basic Level', value: 65 },
+            ],
+          },
+          {
+            category: 'Tools & Technologies',
+            skills: [
+              { name: 'Git', level: 'Expert Level', value: 90 },
+              { name: 'C/C++', level: 'Advanced Level', value: 85 },
+              { name: 'Docker', level: 'Intermediate Level', value: 70 },
+            ],
+          },
+        ].map((section) => (
+          <section className="skill-category" key={section.category}>
+            <h2>{section.category}</h2>
+            <div className="skills-grid">
+              {section.skills.map((skill) => (
+                <div className="skill-item" key={skill.name}>
+                  <h3>
+                    {skill.name}
+                    <span className="skill-percentage">{skill.value}%</span>
+                  </h3>
+                  <div className="progress-bar" data-progress={skill.value}>
+                    <span className="progress-label"></span>
+                  </div>
+                  <div className="skill-level">{skill.level}</div>
+                </div>
+              ))}
             </div>
-            <div className="skill-item">
-              <h3>
-                Javascript
-                <span className="skill-percentage">70%</span>
-              </h3>
-              <div className="progress-bar" data-progress="70"></div>
-              <div className="skill-level">Intermediate Level</div>
-            </div>
-            <div className="skill-item">
-              <h3>
-                React.js
-                <span className="skill-percentage">60%</span>
-              </h3>
-              <div className="progress-bar" data-progress="60"></div>
-              <div className="skill-level">basic Level</div>
-            </div>
-            
-          </div>
-        </section>
-
-        <section className="skill-category">
-          <h2>Backend Development</h2>
-          <div className="skills-grid">
-            <div className="skill-item">
-              <h3>
-                Node.js
-                <span className="skill-percentage">80%</span>
-              </h3>
-              <div className="progress-bar" data-progress="80"></div>
-              <div className="skill-level">Advanced Level</div>
-            </div>
-            <div className="skill-item">
-              <h3>
-                Python
-                <span className="skill-percentage">80%</span>
-              </h3>
-              <div className="progress-bar" data-progress="80"></div>
-              <div className="skill-level">Advanced Level</div>
-            </div>
-            <div className="skill-item">
-              <h3>
-                PHP
-                <span className="skill-percentage">75%</span>
-              </h3>
-              <div className="progress-bar" data-progress="75"></div>
-              <div className="skill-level">Advanced Level</div>
-            </div>
-          </div>
-        </section>
-
-        <section className="skill-category">
-          <h2>Databases</h2>
-          <div className="skills-grid">
-            <div className="skill-item">
-              <h3>
-                SQL
-                <span className="skill-percentage">90%</span>
-              </h3>
-              <div className="progress-bar" data-progress="90"></div>
-              <div className="skill-level">Expert Level</div>
-            </div>
-            <div className="skill-item">
-              <h3>
-                MariaDB
-                <span className="skill-percentage">80%</span>
-              </h3>
-              <div className="progress-bar" data-progress="80"></div>
-              <div className="skill-level">Advanced Level</div>
-            </div>
-            <div className="skill-item">
-              <h3>
-                MongoDB
-                <span className="skill-percentage">65%</span>
-              </h3>
-              <div className="progress-bar" data-progress="65"></div>
-              <div className="skill-level">basic Level</div>
-            </div>
-          </div>
-        </section>
-
-        <section className="skill-category">
-          <h2>Tools & Technologies</h2>
-          <div className="skills-grid">
-            <div className="skill-item">
-              <h3>
-                Git
-                <span className="skill-percentage">90%</span>
-              </h3>
-              <div className="progress-bar" data-progress="90"></div>
-              <div className="skill-level">Expert Level</div>
-            </div>
-            <div className="skill-item">
-              <h3>
-                C/C++
-                <span className="skill-percentage">85%</span>
-              </h3>
-              <div className="progress-bar" data-progress="85"></div>
-              <div className="skill-level">Advanced Level</div>
-            </div>
-             <div className="skill-item">
-              <h3>
-                Docker
-                <span className="skill-percentage">70%</span>
-              </h3>
-              <div className="progress-bar" data-progress="70"></div>
-              <div className="skill-level">Intermediate Level</div>
-            </div>  
-          </div>
-        </section>
+          </section>
+        ))}
       </div>
 
-      <button 
+      <button
         className="back-to-top"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         aria-label="Back to top"
