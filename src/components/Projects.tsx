@@ -364,7 +364,7 @@ Features include detailed case studies, historical accounts, scientific perspect
         </div>
 
         <div className="project-item">
-          <img src="126.jpg" alt="Task Management System" />
+          <img src="126.jpg" />
           <div className="project-details">
             <div className="project-status-live">Live</div>
             <h2>Spam SMS Detection</h2>
@@ -375,7 +375,7 @@ This system leverages advanced natural language processing and pattern recogniti
 Features include customizable filtering levels, learning capabilities that improve over time, and seamless integration possibilities with existing messaging platforms.
             </p>
             <div className="project-links">
-              <a href="https://github.com/Mr-J12/SMSspamdetectionAIbot/tree/main/SMS%20spam%20detector%20project" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Mr-J12/SMSspamdetectionAIbot" className="project-link github-link" target="_blank" rel="noopener noreferrer">
                 📂 GitHub
               </a>
             </div>
@@ -383,7 +383,27 @@ Features include customizable filtering levels, learning capabilities that impro
         </div>
 
         <div className="project-item">
-          <img src="222.jpg" alt="Social Media Dashboard" />
+          <img src="9.jpg" />
+          <div className="project-details">
+            <div className="project-status-live">Live</div>
+            <h2>Excel Data Validator Vault</h2>
+            <p className="tech-stack">TypeScript • React • Tailwind CSS • Supabase</p>
+            <p className="description">
+It is a powerful feature that ensures users enter only valid and consistent data into spreadsheet cells. 
+It helps maintain data quality by restricting input types—such as allowing only numbers, dates, specific text, or values from a dropdown list.
+ When combined with a backend like Supabase, this system becomes even more effective: not only does it validate data at the point of entry, but it also securely stores and syncs the validated data in a real-time PostgreSQL database. 
+This integration allows for seamless data management, backup, and access across multiple platforms, making it ideal for collaborative and data-driven applications.
+            </p>
+            <div className="project-links">
+              <a href="https://github.com/Mr-J12/EDV" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+                📂 GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="project-item">
+          <img src="222.jpg" />
           <div className="project-details">
             <div className="project-status-beta">Beta</div>
             <h2>Mental Healthcare Bot</h2>
@@ -402,11 +422,11 @@ This intelligent companion offers 24/7 availability for crisis intervention, moo
         </div>
 
         <div className="project-item">
-          <img src="555.jpg" alt="Fitness Tracking App" />
+          <img src="555.jpg"/>
           <div className="project-details">
             <div className="project-status-alpha">Under Developing</div>
             <h2>Automation AI App</h2>
-            <p className="tech-stack">React • Next.js • PostgreSQL • Java</p>
+            <p className="tech-stack">Next.js •   Python • PostgreSQL • Java</p>
             <p className="description">
 A comprehensive automation platform that harnesses artificial intelligence to simplify daily tasks and optimize productivity workflows. 
 This versatile application combines smart scheduling, task management, and intelligent decision-making to automate routine activities across personal and professional environments. 
