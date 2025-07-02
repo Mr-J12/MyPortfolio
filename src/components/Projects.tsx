@@ -344,7 +344,7 @@ useEffect(() => {
 
       <div id="reach" ref={projectsRef} className="projects-container">
         <div className="project-item">
-          <img src="123.jpg" alt="E-Commerce Platform" />
+          <img src="123.jpg"/>
           <div className="project-details">
             <div className="project-status-live">Live</div>
             <h2>Paranormal Website</h2>
