@@ -219,17 +219,17 @@ useEffect(() => {
           <h2>Featured Projects</h2>
           <div className="work-grid">
             <div className="work-item">
-              <img src="/src/assets/123.jpg" alt="E-Commerce Platform" />
+              <img src="123.jpg" alt="E-Commerce Platform" />
               <h3>Paranormal Website</h3>
               <p>A full-featured online platform for paranormal enthusiastics</p>
             </div>
             <div className="work-item">
-              <img src="/src/assets/126.jpg" alt="Task Management App" />
+              <img src="126.jpg" alt="Task Management App" />
               <h3>Spam SMS Detection</h3>
               <p>An AI model used for sms spam detection and protection </p>
             </div>
             <div className="work-item">
-              <img src="/src/assets/155.webp" alt="Portfolio Website" />
+              <img src="155.webp" alt="Portfolio Website" />
               <h3>Portfolio Website</h3>
               <p>A responsive portfolio website showcasing modern web design</p>
             </div>
