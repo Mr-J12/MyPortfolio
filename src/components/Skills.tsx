@@ -44,7 +44,7 @@ useEffect(() => {
           padding: 0;
           position: relative;
           background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), 
-                      url('src/assets/51.jpg');
+                      url('51.jpg');
           background-size: cover;
           background-position: center;
           background-attachment: fixed;

@@ -45,7 +45,7 @@ useEffect(() => {
           padding: 0;
           position: relative;
           background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), 
-                      url('src/assets/5.jpg');
+                      url('5.jpg');
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
@@ -344,7 +344,7 @@ useEffect(() => {
 
       <div id="reach" ref={projectsRef} className="projects-container">
         <div className="project-item">
-          <img src="/src/assets/123.jpg" alt="E-Commerce Platform" />
+          <img src="123.jpg" alt="E-Commerce Platform" />
           <div className="project-details">
             <div className="project-status-live">Live</div>
             <h2>Paranormal Website</h2>
@@ -364,7 +364,7 @@ Features include detailed case studies, historical accounts, scientific perspect
         </div>
 
         <div className="project-item">
-          <img src="/src/assets/126.jpg" alt="Task Management System" />
+          <img src="126.jpg" alt="Task Management System" />
           <div className="project-details">
             <div className="project-status-live">Live</div>
             <h2>Spam SMS Detection</h2>
@@ -383,7 +383,7 @@ Features include customizable filtering levels, learning capabilities that impro
         </div>
 
         <div className="project-item">
-          <img src="/src/assets/222.jpg" alt="Social Media Dashboard" />
+          <img src="222.jpg" alt="Social Media Dashboard" />
           <div className="project-details">
             <div className="project-status-beta">Beta</div>
             <h2>Mental Healthcare Bot</h2>
@@ -402,7 +402,7 @@ This intelligent companion offers 24/7 availability for crisis intervention, moo
         </div>
 
         <div className="project-item">
-          <img src="/src/assets/555.jpg" alt="Fitness Tracking App" />
+          <img src="555.jpg" alt="Fitness Tracking App" />
           <div className="project-details">
             <div className="project-status-alpha">Under Developing</div>
             <h2>Automation AI App</h2>
