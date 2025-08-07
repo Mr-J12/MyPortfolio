@@ -69,7 +69,7 @@ useEffect(() => {
         .h-text span {
           letter-spacing: 5px;
           font-size: 24px;
-          color: #4CAF50;
+          color: #994cafff;
         }
 
         .h-text h1 {
