@@ -25,7 +25,7 @@ useEffect(() => {
     if (item instanceof HTMLElement) {
       item.style.opacity = '0';
       item.style.transform = 'translateY(50px)';
-      item.style.transition = `all 0.6s ease ${index * 0.2}s`;
+      item.style.transition = `all 0.8s ease ${index * 0.2}s`;
       observer.observe(item);
     }
   });
@@ -44,14 +44,29 @@ useEffect(() => {
           margin: 0;
           padding: 0;
           position: relative;
-          background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), 
-                      url('5.jpg');
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
+          background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
           display: flex;
           align-items: center;
           justify-content: center;
+          overflow: hidden;
+        }
+
+        header::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: 
+            radial-gradient(circle at 25% 75%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 75% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+          animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.8; }
         }
 
         .h-text {
@@ -62,57 +77,98 @@ useEffect(() => {
           transform: translate(-50%,-50%);
           text-align: center;
           color: white;
+          z-index: 10;
         }
 
         .h-text h1 {
-          font-size: 4em;
+          font-size: clamp(2.5em, 5vw, 4em);
           margin-bottom: 30px;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+          font-weight: 800;
+          background: linear-gradient(135deg, #ffffff, #06b6d4, #8b5cf6);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: slideIn 1s ease-out;
         }
 
         .h-text p {
-          font-size: 1.2em;
+          font-size: 1.3em;
           margin-bottom: 40px;
-          opacity: 0.9;
+          color: #94a3b8;
+          animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         #scrollButton {
-          padding: 15px 30px;
+          padding: 16px 32px;
           font-size: 18px;
-          background-color: #2196F3;
+          background: linear-gradient(135deg, #06b6d4, #8b5cf6);
           color: white;
           border: none;
-          border-radius: 5px;
+          border-radius: 50px;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+          font-weight: 600;
+          position: relative;
+          overflow: hidden;
+          animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        #scrollButton::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.5s ease;
+        }
+
+        #scrollButton:hover::before {
+          left: 100%;
         }
 
         #scrollButton:hover {
-          background-color: #1976D2;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+          transform: translateY(-3px);
+          box-shadow: 0 15px 35px rgba(6, 182, 212, 0.4);
         }
 
         .projects-container {
-          background-color: white;
-          padding: 0 20px;
+          background: linear-gradient(135deg, #0f172a, #1e293b);
+          padding: 80px 5%;
+          position: relative;
+        }
+
+        .projects-container::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #06b6d4, transparent);
         }
 
         .project-item {
           display: flex;
-          background-color: white;
-          margin-bottom: 5px;
-          border-radius: 10px;
+          background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+          backdrop-filter: blur(20px);
+          margin-bottom: 40px;
+          border-radius: 25px;
           overflow: hidden;
-          box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-          transition: all 0.3s ease;
+          transition: all 0.4s ease;
           position: relative;
-        }
-
-        .project-item:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+          border: 1px solid rgba(6, 182, 212, 0.2);
         }
 
         .project-item::before {
@@ -120,9 +176,9 @@ useEffect(() => {
           position: absolute;
           top: 0;
           left: 0;
-          width: 4px;
+          width: 6px;
           height: 100%;
-          background: linear-gradient(45deg,rgb(28, 131, 215), #21CBF3);
+          background: linear-gradient(135deg, #06b6d4, #8b5cf6);
           opacity: 0;
           transition: opacity 0.3s ease;
         }
@@ -131,11 +187,35 @@ useEffect(() => {
           opacity: 1;
         }
 
+        .project-item::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(139, 92, 246, 0.05));
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          z-index: 0;
+        }
+
+        .project-item:hover::after {
+          opacity: 1;
+        }
+
+        .project-item:hover {
+          transform: translateY(-15px);
+          box-shadow: 0 30px 60px rgba(6, 182, 212, 0.2);
+          border-color: rgba(6, 182, 212, 0.5);
+        }
+
         .project-item img {
-          width: 400px;
+          width: 450px;
           height: 400px;
           object-fit: cover;
-          transition: transform 0.3s ease;
+          transition: transform 0.4s ease;
+          z-index: 1;
         }
 
         .project-item:hover img {
@@ -143,137 +223,174 @@ useEffect(() => {
         }
 
         .project-details {
-          padding: 20px;
+          padding: 40px;
           flex: 1;
+          display: flex;
           flex-direction: column;
           justify-content: center;
+          z-index: 1;
         }
 
         .project-details h2 {
-          color: #333;
-          font-size: 28px;
-          margin-bottom: 15px;
-          position: relative;
+          color: #ffffff;
+          font-size: 32px;
+          margin-bottom: 20px;
+          font-weight: 700;
           transition: color 0.3s ease;
-        }
-
-        .project-item:hover .project-details h2 {
-          color: #2196F3;
+          background: linear-gradient(135deg, #ffffff, #06b6d4);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
 
         .tech-stack {
-          color: #2196F3;
+          color: #06b6d4;
           font-size: 18px;
-          margin-bottom: 20px;
+          margin-bottom: 25px;
           font-weight: 600;
           display: flex;
           flex-wrap: wrap;
-          gap: 8px;
+          gap: 12px;
+          align-items: center;
         }
 
         .tech-stack::before {
-          content: '🛠️';
+          content: '🤖';
           margin-right: 8px;
+          font-size: 20px;
         }
 
         .description {
-          color: #666;
-          font-size: 16px;
-          line-height: 1.6;
-          margin-bottom: 20px;
+          color: #94a3b8;
+          font-size: 17px;
+          line-height: 1.7;
+          margin-bottom: 30px;
+          transition: color 0.3s ease;
+        }
+
+        .project-item:hover .description {
+          color: #e2e8f0;
         }
 
         .project-links {
           display: flex;
-          gap: 15px;
+          gap: 20px;
           margin-top: auto;
         }
 
         .project-link {
-          padding: 10px 20px;
-          border-radius: 5px;
+          padding: 12px 24px;
+          border-radius: 25px;
           text-decoration: none;
           font-weight: 600;
           transition: all 0.3s ease;
           display: inline-flex;
           align-items: center;
-          gap: 8px;
+          gap: 10px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .project-link::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.5s ease;
+        }
+
+        .project-link:hover::before {
+          left: 100%;
         }
 
         .github-link {
-          background-color: #333;
+          background: linear-gradient(135deg, #374151, #1f2937);
           color: white;
+          border: 1px solid rgba(75, 85, 99, 0.5);
         }
 
         .github-link:hover {
-          background-color: #555;
+          background: linear-gradient(135deg, #4b5563, #374151);
           transform: translateY(-2px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
         .live-link {
-          background-color: #2196F3;
+          background: linear-gradient(135deg, #06b6d4, #8b5cf6);
           color: white;
         }
 
         .live-link:hover {
-          background-color: #1976D2;
+          background: linear-gradient(135deg, #0891b2, #7c3aed);
           transform: translateY(-2px);
+          box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
         }
 
         .project-status-live {
           position: absolute;
-          top: 20px;
-          right: 20px;
+          top: 25px;
+          right: 25px;
           color: white;
-          background-color: #4CAF50;
-          padding: 5px 12px;
-          border-radius: 15px;
+          background: linear-gradient(135deg, #10b981, #059669);
+          padding: 8px 16px;
+          border-radius: 20px;
           font-size: 12px;
-          font-weight: 600;
+          font-weight: 700;
+          z-index: 2;
+          box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
-          .project-status-beta{
+
+        .project-status-beta {
           position: absolute;
-          top: 20px;
-          right: 20px;
+          top: 25px;
+          right: 25px;
           color: white;
-          background-color:rgb(210, 201, 20);
-          padding: 5px 12px;
-          border-radius: 15px;
+          background: linear-gradient(135deg, #f59e0b, #d97706);
+          padding: 8px 16px;
+          border-radius: 20px;
           font-size: 12px;
-          font-weight: 600;
-          }
-          .project-status-alpha{
+          font-weight: 700;
+          z-index: 2;
+          box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .project-status-alpha {
           position: absolute;
-          top: 20px;
-          right: 20px;
+          top: 25px;
+          right: 25px;
           color: white;
-          background-color:rgb(210, 20, 74);
-          padding: 5px 12px;
-          border-radius: 15px;
+          background: linear-gradient(135deg, #ef4444, #dc2626);
+          padding: 8px 16px;
+          border-radius: 20px;
           font-size: 12px;
-          font-weight: 600;
-          }
+          font-weight: 700;
+          z-index: 2;
+          box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
 
         .back-to-top {
           position: fixed;
           bottom: 30px;
           right: 30px;
-          background-color: #2196F3;
+          background: linear-gradient(135deg, #06b6d4, #8b5cf6);
           color: white;
           border: none;
           border-radius: 50%;
-          width: 50px;
-          height: 50px;
+          width: 60px;
+          height: 60px;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+          box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
           z-index: 1000;
+          font-size: 20px;
         }
 
         .back-to-top:hover {
-          background-color: #1976D2;
-          transform: translateY(-3px);
-          box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+          transform: translateY(-5px) scale(1.1);
+          box-shadow: 0 15px 35px rgba(6, 182, 212, 0.4);
         }
 
         /* Responsive Design */
@@ -283,26 +400,25 @@ useEffect(() => {
           }
 
           .projects-container {
-            margin: 40px auto;
-            padding: 0 15px;
+            padding: 60px 20px;
           }
 
           .project-item {
             flex-direction: column;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
           }
 
           .project-item img {
             width: 100%;
-            height: 250px;
+            height: 280px;
           }
 
           .project-details {
-            padding: 25px;
+            padding: 30px;
           }
 
           .project-details h2 {
-            font-size: 24px;
+            font-size: 26px;
           }
 
           .tech-stack {
@@ -311,7 +427,7 @@ useEffect(() => {
 
           .project-links {
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
           }
 
           .project-link {
@@ -334,10 +450,10 @@ useEffect(() => {
 
       <header>
         <section className="h-text">
-          <h1>Project Portfolio</h1>
-          <p>Showcasing innovative solutions and technical expertise</p>
+          <h1>AI/ML Project Showcase</h1>
+          <p>Innovative machine learning solutions and intelligent applications</p>
           <button id="scrollButton" onClick={scrollToContent}>
-            View Projects
+            Explore AI Projects
           </button>
         </section>
       </header>
@@ -347,13 +463,13 @@ useEffect(() => {
           <img src="123.jpg"/>
           <div className="project-details">
             <div className="project-status-live">Live</div>
-            <h2>Paranormal Website</h2>
-            <p className="tech-stack">HTML/CSS • Bootstrap • PHP • MySQL</p>
+            <h2>AI-Powered Paranormal Analysis</h2>
+            <p className="tech-stack">Machine Learning • NLP • Computer Vision • Python • TensorFlow</p>
             <p className="description">
-Step into the mysterious world of the unexplained with our comprehensive paranormal information platform. 
-This website serves as a digital gateway for enthusiasts, researchers, and curious minds seeking authentic information about supernatural phenomena, unexplained mysteries, and paranormal investigations. 
-Features include detailed case studies, historical accounts, scientific perspectives on paranormal claims, and an interactive community forum where users can share experiences and discuss theories.
-
+              Advanced AI system that analyzes paranormal phenomena using natural language processing and computer vision. 
+              The platform employs deep learning models to categorize supernatural reports, identify patterns in eyewitness accounts, 
+              and provide data-driven insights into unexplained events. Features include sentiment analysis of testimonials, 
+              image recognition for anomaly detection, and predictive modeling for phenomenon classification.
             </p>
             <div className="project-links">
               <a href="https://github.com/Mr-J12/Paranormal-" className="project-link github-link" target="_blank" rel="noopener noreferrer">
@@ -367,12 +483,13 @@ Features include detailed case studies, historical accounts, scientific perspect
           <img src="126.jpg" />
           <div className="project-details">
             <div className="project-status-live">Live</div>
-            <h2>Spam SMS Detection</h2>
-            <p className="tech-stack">Streamlit • Python </p>
+            <h2>Neural SMS Spam Detection</h2>
+            <p className="tech-stack">Deep Learning • NLP • Scikit-learn • NLTK • Streamlit</p>
             <p className="description">
-A sophisticated machine learning-powered solution designed to automatically identify and filter spam messages with remarkable accuracy. 
-This system leverages advanced natural language processing and pattern recognition algorithms to analyze message content, sender behavior, and communication patterns. 
-Features include customizable filtering levels, learning capabilities that improve over time, and seamless integration possibilities with existing messaging platforms.
+              Sophisticated neural network model achieving 95% accuracy in spam detection using advanced NLP techniques. 
+              The system employs LSTM networks, word embeddings, and feature engineering to analyze message patterns. 
+              Includes real-time classification, adaptive learning capabilities, and comprehensive preprocessing pipeline 
+              with tokenization, stemming, and TF-IDF vectorization for optimal performance.
             </p>
             <div className="project-links">
               <a href="https://github.com/Mr-J12/SMSspamdetectionAIbot" className="project-link github-link" target="_blank" rel="noopener noreferrer">
@@ -386,13 +503,13 @@ Features include customizable filtering levels, learning capabilities that impro
           <img src="9.jpg" />
           <div className="project-details">
             <div className="project-status-live">Live</div>
-            <h2>Excel Data Validator Vault</h2>
-            <p className="tech-stack">TypeScript • React • Tailwind CSS • Supabase</p>
+            <h2>Intelligent Data Validator</h2>
+            <p className="tech-stack">Machine Learning • Data Science • React • TypeScript • Supabase</p>
             <p className="description">
-It is a powerful feature that ensures users enter only valid and consistent data into spreadsheet cells. 
-It helps maintain data quality by restricting input types—such as allowing only numbers, dates, specific text, or values from a dropdown list.
- When combined with a backend like Supabase, this system becomes even more effective: not only does it validate data at the point of entry, but it also securely stores and syncs the validated data in a real-time PostgreSQL database. 
-This integration allows for seamless data management, backup, and access across multiple platforms, making it ideal for collaborative and data-driven applications.
+              AI-driven data validation system that uses machine learning algorithms to ensure data quality and consistency. 
+              The platform employs anomaly detection, pattern recognition, and predictive validation to identify data inconsistencies. 
+              Features include automated data cleansing, intelligent error correction suggestions, and real-time validation 
+              with cloud-based storage and synchronization capabilities.
             </p>
             <div className="project-links">
               <a href="https://github.com/Mr-J12/EDV" className="project-link github-link" target="_blank" rel="noopener noreferrer">
@@ -406,12 +523,13 @@ This integration allows for seamless data management, backup, and access across 
           <img src="222.jpg" />
           <div className="project-details">
             <div className="project-status-beta">Beta</div>
-            <h2>Mental Healthcare Bot</h2>
-            <p className="tech-stack">React • Python • Node.js • MongoBD</p>
+            <h2>AI Mental Health Assistant</h2>
+            <p className="tech-stack">NLP • Sentiment Analysis • Neural Networks • React • MongoDB</p>
             <p className="description">
-An empathetic AI-powered chatbot designed to provide immediate mental health support and resources to users seeking emotional assistance. 
-This intelligent companion offers 24/7 availability for crisis intervention, mood tracking, personalized coping strategies, and guided meditation sessions.
- The bot utilizes evidence-based therapeutic techniques, maintains strict confidentiality protocols, and can escalate to human professionals when necessary.
+              Empathetic AI chatbot powered by advanced natural language processing and sentiment analysis for mental health support. 
+              The system uses transformer models, emotion recognition, and therapeutic conversation patterns to provide personalized assistance. 
+              Features include mood tracking algorithms, crisis detection mechanisms, and evidence-based therapeutic interventions 
+              with secure data handling and privacy protection.
             </p>
             <div className="project-links">
               <a href="https://github.com/Mr-J12/Mentalcarebot" className="project-link github-link" target="_blank" rel="noopener noreferrer">
@@ -424,13 +542,14 @@ This intelligent companion offers 24/7 availability for crisis intervention, moo
         <div className="project-item">
           <img src="555.jpg"/>
           <div className="project-details">
-            <div className="project-status-alpha">Under Developing</div>
-            <h2>Automation AI App</h2>
-            <p className="tech-stack">Next.js •   Python • PostgreSQL • Java</p>
+            <div className="project-status-alpha">Under Development</div>
+            <h2>Autonomous AI Automation Platform</h2>
+            <p className="tech-stack">Deep Learning • Computer Vision • NLP • Next.js • PostgreSQL</p>
             <p className="description">
-A comprehensive automation platform that harnesses artificial intelligence to simplify daily tasks and optimize productivity workflows. 
-This versatile application combines smart scheduling, task management, and intelligent decision-making to automate routine activities across personal and professional environments. 
-The AI learns user preferences and patterns to suggest optimizations, automate repetitive processes, and integrate seamlessly with various digital tools and platforms.
+              Comprehensive AI automation platform leveraging multiple machine learning models for intelligent task automation. 
+              The system combines computer vision, natural language understanding, and predictive analytics to automate complex workflows. 
+              Features include intelligent decision trees, adaptive learning algorithms, multi-modal AI integration, 
+              and autonomous process optimization with real-time performance monitoring.
             </p>
             <div className="project-links">
               <a href="https://github.com/Mr-J12/AI-app" className="project-link github-link" target="_blank" rel="noopener noreferrer">

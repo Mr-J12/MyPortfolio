@@ -19,13 +19,21 @@ useEffect(() => {
     { threshold: 0.1 }
   );
 
-  const projectItems = document.querySelectorAll('.work-item');
+  const projectItems = document.querySelectorAll('.work-item, .floating-element');
   projectItems.forEach((item, index) => {
     if (item instanceof HTMLElement) {
       item.style.opacity = '0';
       item.style.transform = 'translateY(50px)';
-      item.style.transition = `all 0.6s ease ${index * 0.2}s`;
+      item.style.transition = `all 0.8s ease ${index * 0.2}s`;
       observer.observe(item);
+    }
+  });
+
+  // Floating animation for AI elements
+  const floatingElements = document.querySelectorAll('.floating-element');
+  floatingElements.forEach((element, index) => {
+    if (element instanceof HTMLElement) {
+      element.style.animationDelay = `${index * 0.5}s`;
     }
   });
 
@@ -39,168 +47,343 @@ useEffect(() => {
 }, []);
 
   return (
-    <><>
+    <>
       <style>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          background: #0f172a;
+          color: #e2e8f0;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
         header {
           width: 100vw;
           height: 100vh;
           margin: 0;
           padding: 0;
           position: relative;
-          background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url('12.jpg');
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
+          background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
           display: flex;
           align-items: center;
           justify-content: center;
+          overflow: hidden;
+        }
+
+        header::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: 
+            radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+          animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.8; }
+        }
+
+        .floating-element {
+          position: absolute;
+          opacity: 0.1;
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+          top: 10%;
+          left: 10%;
+          font-size: 24px;
+          animation-duration: 8s;
+        }
+
+        .floating-element:nth-child(2) {
+          top: 20%;
+          right: 15%;
+          font-size: 18px;
+          animation-duration: 6s;
+        }
+
+        .floating-element:nth-child(3) {
+          bottom: 30%;
+          left: 20%;
+          font-size: 20px;
+          animation-duration: 7s;
+        }
+
+        .floating-element:nth-child(4) {
+          bottom: 20%;
+          right: 10%;
+          font-size: 22px;
+          animation-duration: 9s;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          33% { transform: translateY(-20px) rotate(5deg); }
+          66% { transform: translateY(10px) rotate(-3deg); }
         }
 
         .h-text {
-          max-width: 800px;
+          max-width: 900px;
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%,-50%);
           text-align: center;
           color: white;
+          z-index: 10;
         }
 
         .h-text span {
-          letter-spacing: 5px;
-          font-size: 24px;
-          color: #994cafff;
+          letter-spacing: 3px;
+          font-size: 18px;
+          font-weight: 600;
+          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          display: block;
+          margin-bottom: 20px;
+          animation: slideInFromTop 1s ease-out;
         }
 
         .h-text h1 {
-          font-size: 4em;
-          margin: 20px 0;
+          font-size: clamp(2.5em, 5vw, 4.5em);
+          margin: 30px 0;
+          font-weight: 800;
+          line-height: 1.2;
+          background: linear-gradient(135deg, #ffffff, #e2e8f0, #3b82f6);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: slideInFromBottom 1s ease-out 0.3s both;
+        }
+
+        .h-text .subtitle {
+          font-size: 1.2em;
+          color: #94a3b8;
+          margin-bottom: 40px;
+          animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        @keyframes slideInFromTop {
+          from { opacity: 0; transform: translateY(-30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInFromBottom {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         #scrollButton {
-          padding: 15px 30px;
-          font-size: 18px;
-          background-color: #4CAF50;
+          padding: 16px 32px;
+          font-size: 16px;
+          font-weight: 600;
+          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
           color: white;
           border: none;
-          border-radius: 5px;
+          border-radius: 50px;
           cursor: pointer;
-          transition: 0.3s;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        #scrollButton::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.5s ease;
+        }
+
+        #scrollButton:hover::before {
+          left: 100%;
         }
 
         #scrollButton:hover {
-          background-color:rgb(37, 158, 41);
-          transform: translateY(-2px);
+          transform: translateY(-3px);
+          box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
         }
 
         .wrapper {
-          padding: 40px 10%;
-          background-color: white;
+          padding: 80px 5%;
+          background: linear-gradient(135deg, #0f172a, #1e293b);
+          position: relative;
+        }
+
+        .wrapper::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #3b82f6, transparent);
         }
 
         .wrapper h2 {
-          font-size: 36px;
-          color: #333;
+          font-size: clamp(2em, 4vw, 3em);
+          color: #ffffff;
           margin-bottom: 30px;
           text-align: center;
+          font-weight: 700;
+          background: linear-gradient(135deg, #ffffff, #3b82f6);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
 
         .wrapper p {
           font-size: 18px;
-          line-height: 1.6;
-          color: #666;
-          margin-bottom: 30px;
+          line-height: 1.8;
+          color: #94a3b8;
+          margin-bottom: 50px;
           text-align: center;
-          max-width: 800px;
-          margin: 0 auto;
+          max-width: 900px;
+          margin: 0 auto 50px;
         }
 
         .work-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 30px;
-          margin-top: 40px;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 40px;
+          margin-top: 60px;
         }
 
         .work-item {
-          background-color: #f9f9f9;
-          padding: 20px;
-          border-radius: 10px;
+          background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+          backdrop-filter: blur(20px);
+          padding: 30px;
+          border-radius: 20px;
           text-align: center;
-          transition: 0.3s;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          transition: all 0.4s ease;
+          border: 1px solid rgba(59, 130, 246, 0.2);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .work-item::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .work-item:hover::before {
+          opacity: 1;
         }
 
         .work-item:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          transform: translateY(-10px);
+          box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
+          border-color: rgba(59, 130, 246, 0.5);
         }
 
         .work-item img {
           width: 100%;
-          height: 200px;
+          height: 220px;
           object-fit: cover;
-          border-radius: 5px;
-          margin-bottom: 20px;
+          border-radius: 15px;
+          margin-bottom: 25px;
+          transition: transform 0.3s ease;
+        }
+
+        .work-item:hover img {
+          transform: scale(1.05);
         }
 
         .work-item h3 {
           font-size: 24px;
-          color: #333;
+          color: #ffffff;
           margin-bottom: 15px;
+          font-weight: 600;
         }
 
         .work-item p {
           font-size: 16px;
-          color: #666;
+          color: #94a3b8;
           margin-bottom: 0;
+          line-height: 1.6;
         }
-          .back-to-top {
+
+        .back-to-top {
           position: fixed;
           bottom: 30px;
           right: 30px;
-          background-color: #4CAF50;
+          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
           color: white;
           border: none;
           border-radius: 50%;
-          width: 50px;
-          height: 50px;
+          width: 60px;
+          height: 60px;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+          box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
           z-index: 1000;
+          font-size: 20px;
         }
 
-          .back-to-top:hover {
-          background-color: #4CAF50;
-          transform: translateY(-3px);
-          box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+        .back-to-top:hover {
+          transform: translateY(-5px) scale(1.1);
+          box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
         }
+
         /* Responsive Design */
         @media (max-width: 768px) {
-          .experience-item {
-            padding: 30px 20px;
+          .wrapper {
+            padding: 60px 20px;
           }
           
-          .experience-item h2 {
-            font-size: 24px;
+          .work-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
           }
           
-          .experience-item h3 {
-            font-size: 18px;
-          }
-          
-          .experience-item ul li {
-            font-size: 16px;
+          .work-item {
+            padding: 25px;
           }
         }
       `}</style>
 
       <header>
+        <div className="floating-element">🤖</div>
+        <div className="floating-element">⚡</div>
+        <div className="floating-element">🧠</div>
+        <div className="floating-element">💡</div>
+        <div className="floating-element">🔬</div>
+        <div className="floating-element">📊</div>
+
         <section className="h-text">
-          <span>Front-End-Developer</span>
-          <h1>Creating Digital Solutions<br />That Matter</h1>
-          <button id="scrollButton" onClick={scrollToContent}>View My Work</button>
+          <span>AI/ML Developer</span>
+          <h1>Building Intelligent Solutions<br />for Tomorrow</h1>
+          <p className="subtitle">Transforming data into insights, algorithms into intelligence</p>
+          <button id="scrollButton" onClick={scrollToContent}>Explore My AI Journey</button>
         </section>
       </header>
 
@@ -208,42 +391,43 @@ useEffect(() => {
         <div className="wrapper">
           <h2>About Me</h2>
           <p>
-            I'm a driven BCA student from New Delhi with hands-on programming experience across multiple languages including Java, C++, and web technologies 
-            which brings practical industry exposure through the freelance testing role with Microsoft and has developed diverse projects ranging from travel blogs to AI-based spam detection systems. <br />
-            My technical skills are complemented by creative interests in video editing, music production, and AI image generation. 
-            While still early in career, I strong demonstrates learning ability and initiative, though he would benefit from building more substantial professional experience and quantifying his technical achievements.
+            I'm a passionate AI/ML developer and BCA student from New Delhi, specializing in machine learning, artificial intelligence, and data science. 
+            With hands-on experience in Python, deep learning frameworks, and AI model development, I create intelligent solutions that solve real-world problems. 
+            My expertise spans from natural language processing and computer vision to predictive analytics and neural networks. 
+            I'm constantly exploring cutting-edge AI technologies and contributing to the future of artificial intelligence through innovative projects and research.
           </p>
         </div>
 
         <div className="wrapper">
-          <h2>Featured Projects</h2>
+          <h2>Featured AI Projects</h2>
           <div className="work-grid">
             <div className="work-item">
-              <img src="123.jpg" alt="E-Commerce Platform" />
-              <h3>Paranormal Website</h3>
-              <p>A full-featured online platform for paranormal enthusiastics</p>
+              <img src="123.jpg" alt="AI-Powered Paranormal Analysis" />
+              <h3>AI-Powered Paranormal Analysis</h3>
+              <p>An intelligent platform using machine learning to analyze and categorize paranormal phenomena with data-driven insights</p>
             </div>
             <div className="work-item">
-              <img src="126.jpg" alt="Task Management App" />
-              <h3>Spam SMS Detection</h3>
-              <p>An AI model used for sms spam detection and protection </p>
+              <img src="126.jpg" alt="Smart SMS Spam Detection" />
+              <h3>Smart SMS Spam Detection</h3>
+              <p>Advanced NLP model with 95% accuracy using TensorFlow and scikit-learn for real-time spam classification</p>
             </div>
             <div className="work-item">
-              <img src="155.webp" alt="Portfolio Website" />
-              <h3>Portfolio Website</h3>
-              <p>A responsive portfolio website showcasing modern web design</p>
+              <img src="155.webp" alt="Neural Network Portfolio" />
+              <h3>Neural Network Portfolio</h3>
+              <p>Interactive portfolio showcasing AI projects with dynamic visualizations and machine learning demonstrations</p>
             </div>
           </div>
         </div>
       </div>
-    </>
-    <button
-      className="back-to-top"
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      aria-label="Back to top"
-    >
+
+      <button
+        className="back-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Back to top"
+      >
         ↑
-      </button></>
+      </button>
+    </>
   );
 }
 
