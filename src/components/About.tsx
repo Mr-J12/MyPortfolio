@@ -320,7 +320,7 @@ useEffect(() => {
 
           <div className="experience-item">
             <h2>AI-Powered Design & Automation</h2>
-            <h3>Graphics Designer & AI Specialist | Nexverse | 09/2023-04/2025</h3>
+            <h3>Graphics Designer | Nexverse | 09/2023-04/2025</h3>
             <ul>
               <li>Integrated AI tools for automated design generation and template creation</li>
               <li>Utilized machine learning algorithms to enhance user experience and personalization</li>
