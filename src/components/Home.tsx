@@ -403,7 +403,7 @@ useEffect(() => {
           <div className="work-grid">
             <div className="work-item">
               <img src="123.jpg" alt="AI-Powered Paranormal Analysis" />
-              <h3>AI-Powered Paranormal Analysis</h3>
+              <h3> Paranormal Website</h3>
               <p>An intelligent platform using machine learning to analyze and categorize paranormal phenomena with data-driven insights</p>
             </div>
             <div className="work-item">
@@ -413,7 +413,7 @@ useEffect(() => {
             </div>
             <div className="work-item">
               <img src="155.webp" alt="Neural Network Portfolio" />
-              <h3>Neural Network Portfolio</h3>
+              <h3>Portfolio</h3>
               <p>Interactive portfolio showcasing AI projects with dynamic visualizations and machine learning demonstrations</p>
             </div>
           </div>

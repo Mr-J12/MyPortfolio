@@ -4,7 +4,7 @@ function Skills() {
   const skillsRef = useRef(null);
 
   const scrollToContent = () => {
-    document.getElementById('reach')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('reach4')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -392,7 +392,7 @@ function Skills() {
         </section>
       </header>
 
-      <div id="reach" ref={skillsRef} className="skills-container">
+      <div id="reach4" ref={skillsRef} className="skills-container">
         {[
           {
             category: 'Machine Learning & AI',

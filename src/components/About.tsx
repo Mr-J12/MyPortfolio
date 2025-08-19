@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 function About() {
 
   const scrollToContent = () => {
-    document.getElementById('reach')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('reach1')?.scrollIntoView({ behavior: 'smooth' });
   };
 
 useEffect(() => {
@@ -315,26 +315,17 @@ useEffect(() => {
       </header>
 
       <div id="text">
-        <div id="reach" className="experience-container">
-          <div className="experience-item">
-            <h2>AI Research & Development</h2>
-            <h3>Microsoft Trial Developer | 11/2023-01/2025</h3>
-            <ul>
-              <li>Explored Microsoft's AI and ML services including Azure Cognitive Services</li>
-              <li>Tested and evaluated AI-powered features in Office 365 ecosystem</li>
-              <li>Gained hands-on experience with Microsoft's machine learning tools and APIs</li>
-              <li>Contributed to feedback and improvement of AI-driven productivity features</li>
-            </ul>
-          </div>
+        <div id="reach1" className="experience-container">
+
 
           <div className="experience-item">
             <h2>AI-Powered Design & Automation</h2>
-            <h3>Graphics Designer & AI Specialist | Geekroom | 09/2023-04/2025</h3>
+            <h3>Graphics Designer & AI Specialist | Nexverse | 09/2023-04/2025</h3>
             <ul>
               <li>Integrated AI tools for automated design generation and template creation</li>
-              <li>Developed machine learning models for design pattern recognition</li>
-              <li>Implemented computer vision algorithms for image processing and enhancement</li>
-              <li>Created intelligent design systems using neural networks and deep learning</li>
+              <li>Utilized machine learning algorithms to enhance user experience and personalization</li>
+              <li>Developed AI-driven solutions for real-time design feedback and iteration</li>
+
             </ul>
           </div>
         </div>

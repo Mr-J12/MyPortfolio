@@ -4,7 +4,7 @@ function Projects() {
   const projectsRef = useRef(null);
 
   const scrollToContent = () => {
-    document.getElementById('reach')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('reach3')?.scrollIntoView({ behavior: 'smooth' });
   };
 
 useEffect(() => {
@@ -458,7 +458,7 @@ useEffect(() => {
         </section>
       </header>
 
-      <div id="reach" ref={projectsRef} className="projects-container">
+      <div id="reach3" ref={projectsRef} className="projects-container">
         <div className="project-item">
           <img src="123.jpg"/>
           <div className="project-details">
