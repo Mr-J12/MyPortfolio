@@ -317,15 +317,36 @@ useEffect(() => {
       <div id="text">
         <div id="reach1" className="experience-container">
 
+          <div className="experience-item">
+            <div className="experience-header">
+              <h2>Graphics Designer | AIEC Society (IITM)</h2>
+              <span>Aug 2025 - Present</span>
+            </div>
+            <ul>
+              <li>Designed graphics, event posters, and social media creatives.</li>
+              <li>Ensured brand consistency and visual appeal across various platforms.</li>
+            </ul>
+          </div>
 
           <div className="experience-item">
-            <h2>AI-Powered Design & Automation</h2>
-            <h3>Graphics Designer | Nexverse | 09/2023-04/2025</h3>
+            <div className="experience-header">
+              <h2>Video Editor | Nexverse Society (IITM)</h2>
+              <span>Oct/2024 - Apr/2025</span>
+            </div>
             <ul>
-              <li>Integrated AI tools for automated design generation and template creation</li>
-              <li>Utilized machine learning algorithms to enhance user experience and personalization</li>
-              <li>Developed AI-driven solutions for real-time design feedback and iteration</li>
+              <li>Collaborated with the team to conceptualize and execute video projects from start to finish.</li>
+              <li>Managed and organized video assets, ensuring a streamlined post-production workflow.</li>
+            </ul>
+          </div>
 
+          <div className="experience-item">
+            <div className="experience-header">
+              <h2>Promotional Reel Editor | IITM</h2>
+              <span>May/2025 - June/2025</span>
+            </div>
+            <ul>
+              <li>Edited and produced engaging video content for institute events and promotional activities.</li>
+              <li>Collaborated with teams for scripting, visuals, and post-production work.</li>
             </ul>
           </div>
         </div>

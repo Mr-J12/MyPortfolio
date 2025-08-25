@@ -212,7 +212,7 @@ useEffect(() => {
 
         .project-item img {
           width: 450px;
-          height: 400px;
+          height: 440px;
           object-fit: cover;
           transition: transform 0.4s ease;
           z-index: 1;
@@ -484,29 +484,6 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className="project-item">
-          <img src="126.jpg" />
-          <div className="project-details">
-            <div className="project-status-live">Live</div>
-            <h2>TextGuard [SMS Spam Detection]</h2>
-            <p className="tech-stack">Scikit-learn • Python • Streamlit</p>
-            <p className="description">
-              Sophisticated neural network model achieving 95% accuracy in spam detection using advanced NLP techniques. 
-              The system employs LSTM networks, word embeddings, and feature engineering to analyze message patterns. 
-              Includes real-time classification, adaptive learning capabilities, and comprehensive preprocessing pipeline 
-              with tokenization, stemming, and TF-IDF vectorization for optimal performance.
-            </p>
-            <div className="project-links">
-              <a href="https://github.com/Mr-J12/SMSspamdectection" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-                📂 GitHub
-              </a>
-              <a href="https://smsspamdectection.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
-                🚀 Live Link
-              </a>
-            </div>
-          </div>
-        </div>
-
       <div className="project-item">
         <img src="622.jpg" alt="Serenify Mental Healthcare Website" />
         <div className="project-details">
@@ -526,6 +503,49 @@ useEffect(() => {
           </div>
         </div>
       </div>
+
+        <div className="project-item">
+          <img src="sms.jpg" />
+          <div className="project-details">
+            <div className="project-status-live">Live</div>
+            <h2>TextGuard [SMS Spam Detection]</h2>
+            <p className="tech-stack">Scikit-learn • Python • Streamlit • Machine Learning</p>
+            <p className="description">
+              Sophisticated neural network model achieving 95% accuracy in spam detection using advanced NLP techniques. 
+              The system employs LSTM networks, word embeddings, and feature engineering to analyze message patterns. 
+              Includes real-time classification, adaptive learning capabilities, and comprehensive preprocessing pipeline 
+              with tokenization, stemming, and TF-IDF vectorization for optimal performance.
+            </p>
+            <div className="project-links">
+              <a href="https://github.com/Mr-J12/SMSspamdectection" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+                📂 GitHub
+              </a>
+              <a href="https://smsspamdectection.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
+                🚀 Live Link
+              </a>
+            </div>
+          </div>
+        </div>
+
+          <div className="project-item">
+          <img src="512.jpg" alt="Serenify Mental Healthcare Website" />
+          <div className="project-details">
+              <div className="project-status-live">Live</div>
+              <h2>Diamond Carat Prediction</h2>
+              <p className="tech-stack">Python • Streamlit • Machine Learning • Regression</p>
+              <p className="description">
+               A data-driven approach to valuing a diamond, this project utilizes a machine learning model to accurately predict carat weight. The model analyzes physical dimensions and key quality metrics to provide transparent and reliable predictions. It serves as a powerful tool for buyers and sellers, making the diamond valuation process more efficient and accessible.
+              </p>
+              <div className="project-links">
+                <a href="https://github.com/Mr-J12/DiamondCaratPrediction" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+              📂 GitHub
+              </a>
+                <a href="https://diacarpredmod.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
+                  🚀 Live Link
+                </a>
+              </div>
+            </div>
+          </div>
 
         <div className="project-item">
           <img src="222.jpg" />
