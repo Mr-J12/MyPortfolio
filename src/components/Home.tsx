@@ -404,17 +404,17 @@ useEffect(() => {
             <div className="work-item">
               <img src="123.jpg" alt="AI-Powered Paranormal Analysis" />
               <h3> Paranormal Website</h3>
-              <p>An intelligent platform using machine learning to analyze and categorize paranormal phenomena with data-driven insights</p>
+              <p>An intelligent platform using machine learning to analyze and categorize paranormal phenomena with data-driven insights.</p>
             </div>
             <div className="work-item">
-              <img src="126.jpg" alt="Smart SMS Spam Detection" />
-              <h3>Smart SMS Spam Detection</h3>
-              <p>Advanced NLP model with 95% accuracy using TensorFlow and scikit-learn for real-time spam classification</p>
+              <img src="211.jpg" alt="Mental Healthcare Bot" />
+              <h3>Mental Healthcare Bot</h3>
+              <p>Your confidential AI companion for mental and emotional support, available 24/7. Chat with it for real-time mental health support.</p>
             </div>
             <div className="work-item">
-              <img src="155.webp" alt="Neural Network Portfolio" />
-              <h3>Portfolio</h3>
-              <p>Interactive portfolio showcasing AI projects with dynamic visualizations and machine learning demonstrations</p>
+              <img src="512.jpg" alt="Neural Network Portfolio" />
+              <h3>Diamond Carat Prediction</h3>
+              <p>Developed a machine learning regression model to predict diamond carat weight based on physical dimensions and quality metrics.</p>
             </div>
           </div>
         </div>

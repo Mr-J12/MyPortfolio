@@ -316,17 +316,19 @@ useEffect(() => {
           background: linear-gradient(135deg, #4b5563, #374151);
           transform: translateY(-2px);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+          color: #00f2ffff;
         }
 
         .live-link {
-          background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+          background: linear-gradient(135deg, #00d9ffff, #8b5cf6);
           color: white;
         }
 
         .live-link:hover {
-          background: linear-gradient(135deg, #0891b2, #7c3aed);
+          background: linear-gradient(135deg, #00718eff, #7c3aed);
           transform: translateY(-2px);
           box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
+          color: #08fad6ff;
         }
 
         .project-status-live {
@@ -463,7 +465,7 @@ useEffect(() => {
           <img src="123.jpg"/>
           <div className="project-details">
             <div className="project-status-live">Live</div>
-            <h2>AI-Powered Paranormal Analysis</h2>
+            <h2>Void Whispers [Paranormal website]</h2>
             <p className="tech-stack">Machine Learning • NLP • Computer Vision • Python • TensorFlow</p>
             <p className="description">
               Advanced AI system that analyzes paranormal phenomena using natural language processing and computer vision. 
@@ -472,8 +474,11 @@ useEffect(() => {
               image recognition for anomaly detection, and predictive modeling for phenomenon classification.
             </p>
             <div className="project-links">
-              <a href="https://github.com/Mr-J12/Paranormal-" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Mr-J12/horrorweb" className="project-link github-link" target="_blank" rel="noopener noreferrer">
                 📂 GitHub
+              </a>
+              <a href="https://voidwhispers.vercel.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
+                🚀 Live Link
               </a>
             </div>
           </div>
@@ -483,8 +488,8 @@ useEffect(() => {
           <img src="126.jpg" />
           <div className="project-details">
             <div className="project-status-live">Live</div>
-            <h2>Neural SMS Spam Detection</h2>
-            <p className="tech-stack">Deep Learning • NLP • Scikit-learn • NLTK • Streamlit</p>
+            <h2>TextGuard [SMS Spam Detection]</h2>
+            <p className="tech-stack">Scikit-learn • Python • Streamlit</p>
             <p className="description">
               Sophisticated neural network model achieving 95% accuracy in spam detection using advanced NLP techniques. 
               The system employs LSTM networks, word embeddings, and feature engineering to analyze message patterns. 
@@ -492,8 +497,54 @@ useEffect(() => {
               with tokenization, stemming, and TF-IDF vectorization for optimal performance.
             </p>
             <div className="project-links">
-              <a href="https://github.com/Mr-J12/SMSspamdetectionAIbot" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Mr-J12/SMSspamdectection" className="project-link github-link" target="_blank" rel="noopener noreferrer">
                 📂 GitHub
+              </a>
+              <a href="https://smsspamdectection.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
+                🚀 Live Link
+              </a>
+            </div>
+          </div>
+        </div>
+
+      <div className="project-item">
+        <img src="622.jpg" alt="Serenify Mental Healthcare Website" />
+        <div className="project-details">
+          <div className="project-status-live">Live</div>
+          <h2>Serenify [Mental Healthcare Website]</h2>
+          <p className="tech-stack">TypeScript • React • Node.js • Supabase</p>
+          <p className="description">
+            A safe and welcoming space to find the guidance and support you need on your journey to mental well-being. This comprehensive platform offers a wide range of features to support users on their journey to mental wellness, including personalized therapy sessions, mood tracking, and a supportive community.
+          </p>
+          <div className="project-links">
+            <a href="https://github.com/Mr-J12/Serenify" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+              📂 GitHub
+            </a>
+            <a href="https://serenify-nine.vercel.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
+                🚀 Live Link
+              </a>
+          </div>
+        </div>
+      </div>
+
+        <div className="project-item">
+          <img src="222.jpg" />
+          <div className="project-details">
+            <div className="project-status-live">Live</div>
+            <h2>Nix [Mental Healthcare Bot]</h2>
+            <p className="tech-stack">Sentiment Analysis • Python • Streamlit</p>
+            <p className="description">
+              Empathetic AI chatbot powered by advanced natural language processing and sentiment analysis for mental health support. 
+              The system uses transformer models, emotion recognition, and therapeutic conversation patterns to provide personalized assistance. 
+              Features include mood tracking algorithms, crisis detection mechanisms, and evidence-based therapeutic interventions 
+              with secure data handling and privacy protection.
+            </p>
+            <div className="project-links">
+              <a href="https://github.com/Mr-J12/mentalhealthcareBot" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+                📂 GitHub
+              </a>
+              <a href="https://mentalhealthcarebot.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
+                🚀 Live Link
               </a>
             </div>
           </div>
@@ -502,9 +553,9 @@ useEffect(() => {
         <div className="project-item">
           <img src="9.jpg" />
           <div className="project-details">
-            <div className="project-status-live">Live</div>
-            <h2>Intelligent Data Validator</h2>
-            <p className="tech-stack">Machine Learning • Data Science • React • TypeScript • Supabase</p>
+            <div className="project-status-beta">Beta</div>
+            <h2>EDV Valut [Intelligent Data Validator]</h2>
+            <p className="tech-stack">Data Science • React • TypeScript • Supabase</p>
             <p className="description">
               AI-driven data validation system that uses machine learning algorithms to ensure data quality and consistency. 
               The platform employs anomaly detection, pattern recognition, and predictive validation to identify data inconsistencies. 
@@ -513,26 +564,6 @@ useEffect(() => {
             </p>
             <div className="project-links">
               <a href="https://github.com/Mr-J12/EDV" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-                📂 GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="project-item">
-          <img src="222.jpg" />
-          <div className="project-details">
-            <div className="project-status-beta">Beta</div>
-            <h2>AI Mental Health Assistant</h2>
-            <p className="tech-stack">NLP • Sentiment Analysis • Neural Networks • React • MongoDB</p>
-            <p className="description">
-              Empathetic AI chatbot powered by advanced natural language processing and sentiment analysis for mental health support. 
-              The system uses transformer models, emotion recognition, and therapeutic conversation patterns to provide personalized assistance. 
-              Features include mood tracking algorithms, crisis detection mechanisms, and evidence-based therapeutic interventions 
-              with secure data handling and privacy protection.
-            </p>
-            <div className="project-links">
-              <a href="https://github.com/Mr-J12/Mentalcarebot" className="project-link github-link" target="_blank" rel="noopener noreferrer">
                 📂 GitHub
               </a>
             </div>

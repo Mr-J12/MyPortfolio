@@ -427,7 +427,7 @@ function Skills() {
               { name: 'React/TypeScript', level: 'Advanced Level', value: 85 },
               { name: 'Cloud Platforms (AWS/Azure)', level: 'Intermediate Level', value: 70 },
               { name: 'Docker/MLOps', level: 'Intermediate Level', value: 72 },
-              { name: 'API Development', level: 'Advanced Level', value: 80 },
+              { name: 'API Development', level: 'Intermediate Level', value: 70 },
             ],
           },
         ].map((section) => (
