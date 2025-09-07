@@ -10,7 +10,6 @@ function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
-    // Load theme from localStorage
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     if (savedTheme) {
       setTheme(savedTheme);
@@ -18,7 +17,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Apply theme to document
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
@@ -34,7 +32,7 @@ function App() {
             Yashwant Singh Rawat
         </div>
         <div className="menu">
-          <a href="#reach1">About Me</a>
+          <a href="#reach">About Me</a>
           <a href="#reach1">Experience Journey</a>
           <a href="#reach3">Project Showcase</a>
           <a href="#reach4">Technical Arsenal</a>
