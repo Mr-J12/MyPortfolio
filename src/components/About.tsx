@@ -236,7 +236,7 @@ useEffect(() => {
         }
 
         .experience-item ul li {
-          color: var(--subtitle-color);
+          color: #aacdff;
           font-size: 18px;
           margin-bottom: 15px;
           padding-left: 30px;
@@ -253,10 +253,6 @@ useEffect(() => {
           left: 0;
           top: 0;
           font-size: 16px;
-        }
-
-        .experience-item:hover ul li {
-          color: var(--text-color);
         }
 
         .back-to-top {

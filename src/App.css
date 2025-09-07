@@ -48,7 +48,7 @@
   --header-bg: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
   --wrapper-bg: linear-gradient(135deg, #ffffff, #f8fafc);
   --wrapper-border: linear-gradient(90deg, transparent, #2563eb, transparent);
-  --work-item-bg: linear-gradient(135deg, rgb(57, 155, 253), rgba(255, 255, 255, 0.768));
+  --work-item-bg: linear-gradient(135deg, #35d2f2, #0d0b4a, #3b82f6);
   --work-item-border: rgba(59, 130, 246, 0.3);
   --work-item-hover-border: rgba(37, 99, 235, 0.5);
   --work-item-hover-shadow: rgba(37, 99, 235, 0.2);
@@ -245,6 +245,7 @@ nav:hover {
     padding: 15px 5%;
     border-radius: 0;
     border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    color: white;
   }
   
   .menu a:last-child {

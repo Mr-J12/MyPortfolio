@@ -262,7 +262,7 @@ function Skills() {
         }
 
         .skill-item h3 {
-          color: var(--text-color);
+          color: #94bcff;
           font-size: 22px;
           margin-bottom: 20px;
           display: flex;
