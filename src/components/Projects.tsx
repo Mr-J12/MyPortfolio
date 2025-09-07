@@ -460,7 +460,7 @@ useEffect(() => {
         </section>
       </header>
 
-      <div id="reach3" ref={projectsRef} className="projects-container">
+      <div id="reach3" ref={projectsRef} className="projects-container" data-section="projects">
         <div className="project-item">
           <img src="123.jpg"/>
           <div className="project-details">

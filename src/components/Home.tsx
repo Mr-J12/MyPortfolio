@@ -1,6 +1,103 @@
 import { useEffect } from 'react';
 
 function Home() {
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateNavbar = () => {
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        // Scrolling down
+        nav.classList.add('nav-hidden');
+      } else {
+        // Scrolling up
+        nav.classList.remove('nav-hidden');
+      }
+      lastScrollY = window.scrollY;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateNavbar);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    // Mobile menu functionality
+    const setupMobileMenu = () => {
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+
+      // Create mobile menu toggle if it doesn't exist
+      let mobileToggle = nav.querySelector('.mobile-menu-toggle');
+      if (!mobileToggle) {
+        mobileToggle = document.createElement('div');
+        mobileToggle.className = 'mobile-menu-toggle';
+        mobileToggle.innerHTML = '<span></span><span></span><span></span>';
+        nav.appendChild(mobileToggle);
+      }
+
+      const menu = nav.querySelector('.menu');
+      if (!menu) return;
+
+      const handleToggle = () => {
+        mobileToggle?.classList.toggle('active');
+        menu.classList.toggle('active');
+      };
+
+      mobileToggle.addEventListener('click', handleToggle);
+
+      // Close menu when clicking on a link
+      const menuLinks = menu.querySelectorAll('a');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileToggle?.classList.remove('active');
+          menu.classList.remove('active');
+        });
+      });
+
+      return () => {
+        mobileToggle?.removeEventListener('click', handleToggle);
+        menuLinks.forEach(link => {
+          link.removeEventListener('click', handleToggle);
+        });
+      };
+    };
+
+    const cleanup = setupMobileMenu();
+    return cleanup;
+  }, []);
+
+  useEffect(() => {
+    // Smooth scrolling for navigation links
+    const handleNavClick = (e: Event) => {
+      const target = e.target as HTMLAnchorElement;
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+        e.preventDefault();
+        const targetId = target.getAttribute('href')?.substring(1);
+        const targetElement = document.getElementById(targetId || '');
+        if (targetElement) {
+          const offsetTop = targetElement.offsetTop - 100; // Account for fixed nav
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    document.addEventListener('click', handleNavClick);
+    return () => document.removeEventListener('click', handleNavClick);
+  }, []);
 
   const scrollToContent = () => {
     document.getElementById('reach')?.scrollIntoView({ behavior: 'smooth' });

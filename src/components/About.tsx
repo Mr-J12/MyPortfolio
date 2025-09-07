@@ -314,8 +314,8 @@ useEffect(() => {
         </section>
       </header>
 
-      <div id="text">
-        <div id="reach1" className="experience-container">
+      <div id="text" data-section="about">
+        <div id="reach1" className="experience-container" data-section="experience">
 
           <div className="experience-item">
             <div className="experience-header">

@@ -392,7 +392,7 @@ function Skills() {
         </section>
       </header>
 
-      <div id="reach4" ref={skillsRef} className="skills-container">
+      <div id="reach4" ref={skillsRef} className="skills-container" data-section="skills">
         {[
           {
             category: 'Machine Learning & AI',
