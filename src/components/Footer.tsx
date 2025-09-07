@@ -241,11 +241,6 @@ function Footer() {
             <div className="copyright">
               <span>© 2025 Yashwant Singh Rawat</span>
             </div>
-            <div className="made-with-love">
-              <span>Made with</span>
-              <span className="heart">❤️</span>
-              <span>and AI</span>
-            </div>
           </div>
         </div>
       </footer>
