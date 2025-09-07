@@ -48,7 +48,7 @@ function Skills() {
           margin: 0;
           padding: 0;
           position: relative;
-          background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+          background: var(--header-bg);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -62,7 +62,7 @@ function Skills() {
           left: 0;
           width: 100%;
           height: 100%;
-          background: 
+          background:
             radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
             radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
           animation: pulse 3s ease-in-out infinite;
@@ -98,7 +98,7 @@ function Skills() {
         .h-text p {
           font-size: 1.3em;
           margin-bottom: 40px;
-          color: #94a3b8;
+          color: var(--subtitle-color);
           animation: fadeIn 1s ease-out 0.3s both;
         }
 
@@ -115,7 +115,7 @@ function Skills() {
         #scrollButton {
           padding: 16px 32px;
           font-size: 18px;
-          background: linear-gradient(135deg, #a855f7, #3b82f6);
+          background: var(--back-to-top-bg);
           color: white;
           border: none;
           border-radius: 50px;
@@ -144,12 +144,12 @@ function Skills() {
 
         #scrollButton:hover {
           transform: translateY(-3px);
-          box-shadow: 0 15px 35px rgba(168, 85, 247, 0.4);
+          box-shadow: var(--back-to-top-hover-shadow);
         }
 
         .skills-container {
           padding: 80px 5%;
-          background: linear-gradient(135deg, #0f172a, #1e293b);
+          background: var(--wrapper-bg);
           position: relative;
         }
 
@@ -160,17 +160,17 @@ function Skills() {
           left: 0;
           width: 100%;
           height: 1px;
-          background: linear-gradient(90deg, transparent, #a855f7, transparent);
+          background: var(--wrapper-border);
         }
 
         .skill-category {
-          background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+          background: var(--work-item-bg);
           backdrop-filter: blur(20px);
           padding: 50px;
           margin-bottom: 40px;
           border-radius: 25px;
           transition: all 0.4s ease;
-          border: 1px solid rgba(168, 85, 247, 0.2);
+          border: 1px solid var(--work-item-border);
           position: relative;
           overflow: hidden;
         }
@@ -193,12 +193,12 @@ function Skills() {
 
         .skill-category:hover {
           transform: translateY(-10px);
-          box-shadow: 0 25px 50px rgba(168, 85, 247, 0.2);
-          border-color: rgba(168, 85, 247, 0.5);
+          box-shadow: var(--work-item-hover-shadow);
+          border-color: var(--work-item-hover-border);
         }
 
         .skill-category h2 {
-          color: #ffffff;
+          color: var(--text-color);
           font-size: 32px;
           margin-bottom: 40px;
           text-align: center;
@@ -218,7 +218,7 @@ function Skills() {
           transform: translateX(-50%);
           width: 80px;
           height: 4px;
-          background: linear-gradient(135deg, #a855f7, #3b82f6);
+          background: var(--back-to-top-bg);
           border-radius: 2px;
         }
 
@@ -229,12 +229,12 @@ function Skills() {
         }
 
         .skill-item {
-          background: linear-gradient(135deg, rgba(51, 65, 85, 0.6), rgba(71, 85, 105, 0.4));
+          background: var(--skill-item-bg);
           backdrop-filter: blur(10px);
           padding: 25px;
           border-radius: 15px;
           transition: all 0.3s ease;
-          border: 1px solid rgba(168, 85, 247, 0.3);
+          border: 1px solid var(--skill-item-border);
           position: relative;
           overflow: hidden;
         }
@@ -257,12 +257,12 @@ function Skills() {
 
         .skill-item:hover {
           transform: translateY(-5px);
-          border-color: rgba(168, 85, 247, 0.6);
-          box-shadow: 0 15px 30px rgba(168, 85, 247, 0.2);
+          border-color: var(--skill-item-hover-border);
+          box-shadow: var(--skill-item-hover-shadow);
         }
 
         .skill-item h3 {
-          color: #ffffff;
+          color: var(--text-color);
           font-size: 22px;
           margin-bottom: 20px;
           display: flex;
@@ -275,18 +275,18 @@ function Skills() {
 
         .skill-percentage {
           font-size: 14px;
-          color: #a855f7;
+          color: var(--secondary-accent);
           font-weight: 700;
-          background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(59, 130, 246, 0.2));
+          background: var(--skill-percentage-bg);
           backdrop-filter: blur(10px);
           padding: 6px 12px;
           border-radius: 15px;
-          border: 1px solid rgba(168, 85, 247, 0.3);
+          border: 1px solid var(--skill-percentage-border);
         }
 
         .progress-bar {
           height: 12px;
-          background: rgba(51, 65, 85, 0.8);
+          background: var(--progress-bar-bg);
           border-radius: 6px;
           overflow: hidden;
           position: relative;
@@ -332,7 +332,7 @@ function Skills() {
 
         .skill-level {
           font-size: 13px;
-          color: #94a3b8;
+          color: var(--subtitle-color);
           margin-top: 10px;
           font-style: italic;
           font-weight: 500;
@@ -344,7 +344,7 @@ function Skills() {
           position: fixed;
           bottom: 30px;
           right: 30px;
-          background: linear-gradient(135deg, #a855f7, #3b82f6);
+          background: var(--back-to-top-bg);
           color: white;
           border: none;
           border-radius: 50%;
@@ -352,14 +352,14 @@ function Skills() {
           height: 60px;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+          box-shadow: var(--back-to-top-shadow);
           z-index: 1000;
           font-size: 20px;
         }
 
         .back-to-top:hover {
           transform: translateY(-5px) scale(1.1);
-          box-shadow: 0 15px 35px rgba(168, 85, 247, 0.4);
+          box-shadow: var(--back-to-top-hover-shadow);
         }
 
         @media (max-width: 768px) {

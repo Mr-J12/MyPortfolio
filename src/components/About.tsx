@@ -46,8 +46,8 @@ useEffect(() => {
         body {
           margin: 0;
           padding: 0;
-          background: #0f172a;
-          color: #e2e8f0;
+          background: var(--body-bg);
+          color: var(--text-color);
         }
 
         header {
@@ -56,7 +56,7 @@ useEffect(() => {
           margin: 0;
           padding: 0;
           position: relative;
-          background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+          background: var(--header-bg);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -70,7 +70,7 @@ useEffect(() => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: 
+          background:
             radial-gradient(circle at 30% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
             radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
           animation: pulse 3s ease-in-out infinite;
@@ -143,7 +143,7 @@ useEffect(() => {
         }
 
         .experience-container {
-          background: linear-gradient(135deg, #0f172a, #1e293b);
+          background: var(--wrapper-bg);
           width: 100%;
           padding: 80px 5%;
           position: relative;
@@ -156,17 +156,17 @@ useEffect(() => {
           left: 0;
           width: 100%;
           height: 1px;
-          background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+          background: var(--wrapper-border);
         }
 
         .experience-item {
-          background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+          background: var(--work-item-bg);
           backdrop-filter: blur(20px);
           padding: 50px;
           margin-bottom: 30px;
           border-radius: 20px;
           transition: all 0.4s ease;
-          border: 1px solid rgba(139, 92, 246, 0.2);
+          border: 1px solid var(--work-item-border);
           position: relative;
           overflow: hidden;
         }
@@ -178,7 +178,7 @@ useEffect(() => {
           left: 0;
           width: 4px;
           height: 100%;
-          background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+          background: var(--back-to-top-bg);
         }
 
         .experience-item::after {
@@ -200,12 +200,12 @@ useEffect(() => {
 
         .experience-item:hover {
           transform: translateY(-10px);
-          box-shadow: 0 25px 50px rgba(139, 92, 246, 0.2);
-          border-color: rgba(139, 92, 246, 0.5);
+          box-shadow: var(--work-item-hover-shadow);
+          border-color: var(--work-item-hover-border);
         }
 
         .experience-item h2 {
-          color: #ffffff;
+          color: var(--text-color);
           font-size: 32px;
           margin-bottom: 15px;
           font-weight: 700;
@@ -216,7 +216,7 @@ useEffect(() => {
         }
 
         .experience-item h3 {
-          color: #3b82f6;
+          color: var(--accent-color);
           font-size: 20px;
           margin-bottom: 25px;
           font-weight: 600;
@@ -236,7 +236,7 @@ useEffect(() => {
         }
 
         .experience-item ul li {
-          color: #94a3b8;
+          color: var(--subtitle-color);
           font-size: 18px;
           margin-bottom: 15px;
           padding-left: 30px;
@@ -247,7 +247,7 @@ useEffect(() => {
 
         .experience-item ul li:before {
           content: "⚡";
-          color: #8b5cf6;
+          color: var(--secondary-accent);
           font-weight: bold;
           position: absolute;
           left: 0;
@@ -256,14 +256,14 @@ useEffect(() => {
         }
 
         .experience-item:hover ul li {
-          color: #e2e8f0;
+          color: var(--text-color);
         }
 
         .back-to-top {
           position: fixed;
           bottom: 30px;
           right: 30px;
-          background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+          background: var(--back-to-top-bg);
           color: white;
           border: none;
           border-radius: 50%;
@@ -271,14 +271,14 @@ useEffect(() => {
           height: 60px;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+          box-shadow: var(--back-to-top-shadow);
           z-index: 1000;
           font-size: 20px;
         }
 
         .back-to-top:hover {
           transform: translateY(-5px) scale(1.1);
-          box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
+          box-shadow: var(--back-to-top-hover-shadow);
         }
 
         /* Responsive Design */

@@ -153,8 +153,8 @@ useEffect(() => {
         }
 
         body {
-          background: #0f172a;
-          color: #e2e8f0;
+          background: var(--body-bg);
+          color: var(--text-color);
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
@@ -164,7 +164,7 @@ useEffect(() => {
           margin: 0;
           padding: 0;
           position: relative;
-          background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+          background: var(--header-bg);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -245,7 +245,7 @@ useEffect(() => {
           letter-spacing: 3px;
           font-size: 18px;
           font-weight: 600;
-          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+          background: var(--back-to-top-bg);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -268,7 +268,7 @@ useEffect(() => {
 
         .h-text .subtitle {
           font-size: 1.2em;
-          color: #94a3b8;
+          color: var(--subtitle-color);
           margin-bottom: 40px;
           animation: fadeIn 1s ease-out 0.6s both;
         }
@@ -292,7 +292,7 @@ useEffect(() => {
           padding: 16px 32px;
           font-size: 16px;
           font-weight: 600;
-          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+          background: var(--back-to-top-bg);
           color: white;
           border: none;
           border-radius: 50px;
@@ -320,12 +320,12 @@ useEffect(() => {
 
         #scrollButton:hover {
           transform: translateY(-3px);
-          box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+          box-shadow: var(--back-to-top-hover-shadow);
         }
 
         .wrapper {
           padding: 80px 5%;
-          background: linear-gradient(135deg, #0f172a, #1e293b);
+          background: var(--wrapper-bg);
           position: relative;
         }
 
@@ -336,12 +336,12 @@ useEffect(() => {
           left: 0;
           width: 100%;
           height: 1px;
-          background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+          background: var(--wrapper-border);
         }
 
         .wrapper h2 {
           font-size: clamp(2em, 4vw, 3em);
-          color: #ffffff;
+          color: var(--text-color);
           margin-bottom: 30px;
           text-align: center;
           font-weight: 700;
@@ -354,7 +354,7 @@ useEffect(() => {
         .wrapper p {
           font-size: 18px;
           line-height: 1.8;
-          color: #94a3b8;
+          color: var(--subtitle-color);
           margin-bottom: 50px;
           text-align: center;
           max-width: 900px;
@@ -369,13 +369,13 @@ useEffect(() => {
         }
 
         .work-item {
-          background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+          background: var(--work-item-bg);
           backdrop-filter: blur(20px);
           padding: 30px;
           border-radius: 20px;
           text-align: center;
           transition: all 0.4s ease;
-          border: 1px solid rgba(59, 130, 246, 0.2);
+          border: 1px solid var(--work-item-border);
           position: relative;
           overflow: hidden;
         }
@@ -398,8 +398,8 @@ useEffect(() => {
 
         .work-item:hover {
           transform: translateY(-10px);
-          box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
-          border-color: rgba(59, 130, 246, 0.5);
+          box-shadow: 0 25px 50px var(--work-item-hover-shadow);
+          border-color: var(--work-item-hover-border);
         }
 
         .work-item img {
@@ -433,7 +433,7 @@ useEffect(() => {
           position: fixed;
           bottom: 30px;
           right: 30px;
-          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+          background: var(--back-to-top-bg);
           color: white;
           border: none;
           border-radius: 50%;
@@ -441,14 +441,14 @@ useEffect(() => {
           height: 60px;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+          box-shadow: var(--back-to-top-shadow);
           z-index: 1000;
           font-size: 20px;
         }
 
         .back-to-top:hover {
           transform: translateY(-5px) scale(1.1);
-          box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+          box-shadow: var(--back-to-top-hover-shadow);
         }
 
         /* Responsive Design */
@@ -477,7 +477,7 @@ useEffect(() => {
         <div className="floating-element">📊</div>
 
         <section className="h-text">
-          <span>AI/ML Developer</span>
+          <span>AI/ML Engineer</span>
           <h1>Building Intelligent Solutions<br />for Tomorrow</h1>
           <p className="subtitle">Transforming data into insights, algorithms into intelligence</p>
           <button id="scrollButton" onClick={scrollToContent}>Explore My AI Journey</button>
