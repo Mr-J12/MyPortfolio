@@ -1,15 +1,12 @@
-# TODO: Add Light and Dark Mode Toggle to Navigation Bar
+# TODO: Apply Light and Dark Mode to Footer
 
 ## Tasks
-- [x] Update `src/App.tsx` to add theme state and toggle button
-- [x] Update `src/App.css` to define theme variables and styles
-- [x] Update `src/components/Home.tsx` to use theme variables for entire page
-- [x] Test toggle functionality and responsiveness
-- [x] Verify all components display correctly in both modes
+- [x] Add footer-specific CSS variables to App.css for both light and dark themes
+- [x] Update Footer.tsx to use CSS variables instead of hardcoded colors
+- [ ] Test the theme toggle to ensure footer changes with theme
 
 ## Progress
-- App.tsx updated with theme state and toggle button
-- App.css updated with theme variables and styles
-- Home.tsx fully updated to use theme variables throughout the entire page
-- Theme toggle functionality tested and working
-- All components display correctly in both light and dark modes
+- [x] Analyze current theme implementation
+- [x] Plan the changes needed
+- [x] Add footer-specific CSS variables to App.css for both light and dark themes
+- [x] Update Footer.tsx to use CSS variables instead of hardcoded colors

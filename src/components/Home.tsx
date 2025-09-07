@@ -496,7 +496,7 @@ useEffect(() => {
         </div>
 
         <div className="wrapper">
-          <h2>Featured AI Projects</h2>
+          <h2>Featured Projects</h2>
           <div className="work-grid">
             <div className="work-item">
               <img src="123.jpg" alt="AI-Powered Paranormal Analysis" />

@@ -4,9 +4,9 @@ function Footer() {
     <>
       <style>{`
         .footer {
-          background: linear-gradient(135deg, #0f172a, #1e293b);
+          background: var(--footer-bg);
           padding: 60px 5% 40px;
-          border-top: 1px solid rgba(59, 130, 246, 0.2);
+          border-top: 1px solid var(--footer-border);
           position: relative;
         }
 
@@ -30,7 +30,7 @@ function Footer() {
           font-size: 32px;
           font-weight: 700;
           margin-bottom: 20px;
-          background: linear-gradient(135deg, #ffffff, #3b82f6, #8b5cf6);
+          background: var(--footer-title-gradient);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -38,7 +38,7 @@ function Footer() {
 
         .footer-subtitle {
           font-size: 18px;
-          color: #94a3b8;
+          color: var(--footer-subtitle-color);
           margin-bottom: 40px;
           line-height: 1.6;
         }
@@ -55,11 +55,11 @@ function Footer() {
           align-items: center;
           gap: 12px;
           padding: 15px 25px;
-          background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+          background: var(--footer-social-bg);
           backdrop-filter: blur(20px);
-          border: 1px solid rgba(59, 130, 246, 0.2);
+          border: 1px solid var(--footer-social-border);
           border-radius: 50px;
-          color: #e2e8f0;
+          color: var(--footer-social-text);
           text-decoration: none;
           font-weight: 600;
           font-size: 16px;
@@ -115,7 +115,7 @@ function Footer() {
         .footer-divider {
           width: 100%;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+          background: linear-gradient(90deg, transparent, var(--footer-divider-color), transparent);
           margin: 40px 0 30px;
         }
 
@@ -123,7 +123,7 @@ function Footer() {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          color: #64748b;
+          color: var(--footer-bottom-color);
           font-size: 14px;
         }
 
@@ -220,7 +220,7 @@ function Footer() {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <span className="social-icon">💼</span>
+              <span className="social-icon">🔗</span>
               LinkedIn
             </a>
             <a 
@@ -229,7 +229,7 @@ function Footer() {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <span className="social-icon">🐙</span>
+              <span className="social-icon">🗃️</span>
               GitHub
             </a>
           </div>

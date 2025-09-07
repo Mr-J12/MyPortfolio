@@ -307,7 +307,7 @@ useEffect(() => {
 
       <header>
         <section className="h-text">
-          <h1>AI/ML Experience Journey</h1>
+          <h1>Experience Journey</h1>
           <button id="scrollButton" onClick={scrollToContent}>
             View Experience
           </button>

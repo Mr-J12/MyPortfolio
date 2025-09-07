@@ -384,7 +384,7 @@ function Skills() {
 
       <header>
         <section className="h-text">
-          <h1>AI/ML Technical Arsenal</h1>
+          <h1>Technical Arsenal</h1>
           <p>Mastering cutting-edge technologies in artificial intelligence and machine learning</p>
           <button id="scrollButton" onClick={scrollToContent}>
             View AI Skills

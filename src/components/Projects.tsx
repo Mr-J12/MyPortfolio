@@ -44,7 +44,7 @@ useEffect(() => {
           margin: 0;
           padding: 0;
           position: relative;
-          background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+          background: var(--header-bg);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -76,7 +76,7 @@ useEffect(() => {
           left: 50%;
           transform: translate(-50%,-50%);
           text-align: center;
-          color: white;
+          color: var(--text-color);
           z-index: 10;
         }
 
@@ -84,7 +84,7 @@ useEffect(() => {
           font-size: clamp(2.5em, 5vw, 4em);
           margin-bottom: 30px;
           font-weight: 800;
-          background: linear-gradient(135deg, #ffffff, #06b6d4, #8b5cf6);
+          background: linear-gradient(135deg, #ffffff, var(--accent-color), var(--secondary-accent));
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -94,7 +94,7 @@ useEffect(() => {
         .h-text p {
           font-size: 1.3em;
           margin-bottom: 40px;
-          color: #94a3b8;
+          color: var(--subtitle-color);
           animation: fadeIn 1s ease-out 0.3s both;
         }
 
@@ -111,7 +111,7 @@ useEffect(() => {
         #scrollButton {
           padding: 16px 32px;
           font-size: 18px;
-          background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+          background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
           color: white;
           border: none;
           border-radius: 50px;
@@ -140,11 +140,11 @@ useEffect(() => {
 
         #scrollButton:hover {
           transform: translateY(-3px);
-          box-shadow: 0 15px 35px rgba(6, 182, 212, 0.4);
+          box-shadow: 0 15px 35px var(--work-item-hover-shadow);
         }
 
         .projects-container {
-          background: linear-gradient(135deg, #0f172a, #1e293b);
+          background: var(--wrapper-bg);
           padding: 80px 5%;
           position: relative;
         }
@@ -156,7 +156,7 @@ useEffect(() => {
           left: 0;
           width: 100%;
           height: 1px;
-          background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+          background: var(--wrapper-border);
         }
 
         .project-item {
@@ -452,7 +452,7 @@ useEffect(() => {
 
       <header>
         <section className="h-text">
-          <h1>AI/ML Project Showcase</h1>
+          <h1>Project Showcase</h1>
           <p>Innovative machine learning solutions and intelligent applications</p>
           <button id="scrollButton" onClick={scrollToContent}>
             Explore AI Projects
@@ -508,7 +508,7 @@ useEffect(() => {
           <img src="sms.jpg" />
           <div className="project-details">
             <div className="project-status-live">Live</div>
-            <h2>TextGuard [SMS Spam Detection]</h2>
+            <h2>TextGuard [SMS Spam Detector]</h2>
             <p className="tech-stack">Scikit-learn • Python • Streamlit • Machine Learning</p>
             <p className="description">
               Sophisticated neural network model achieving 95% accuracy in spam detection using advanced NLP techniques. 
@@ -531,7 +531,7 @@ useEffect(() => {
           <img src="512.jpg" alt="Serenify Mental Healthcare Website" />
           <div className="project-details">
               <div className="project-status-live">Live</div>
-              <h2>Diamond Carat Prediction</h2>
+              <h2>Crystalytics [Diamond Carat Predictor]</h2>
               <p className="tech-stack">Python • Streamlit • Machine Learning • Regression</p>
               <p className="description">
                A data-driven approach to valuing a diamond, this project utilizes a machine learning model to accurately predict carat weight. The model analyzes physical dimensions and key quality metrics to provide transparent and reliable predictions. It serves as a powerful tool for buyers and sellers, making the diamond valuation process more efficient and accessible.
