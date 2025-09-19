@@ -466,7 +466,7 @@ useEffect(() => {
           <div className="project-details">
             <div className="project-status-live">Live</div>
             <h2>Void Whispers [Paranormal website]</h2>
-            <p className="tech-stack">Machine Learning • NLP • Computer Vision • Python • TensorFlow</p>
+            <p className="tech-stack">TypeScript • React • Node.js • Supabase</p>
             <p className="description">
               Advanced AI system that analyzes paranormal phenomena using natural language processing and computer vision. 
               The platform employs deep learning models to categorize supernatural reports, identify patterns in eyewitness accounts, 
