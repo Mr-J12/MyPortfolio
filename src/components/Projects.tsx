@@ -504,29 +504,6 @@ useEffect(() => {
         </div>
       </div>
 
-        <div className="project-item">
-          <img src="sms.jpg" />
-          <div className="project-details">
-            <div className="project-status-live">Live</div>
-            <h2>TextGuard [SMS Spam Detector]</h2>
-            <p className="tech-stack">Scikit-learn • Python • Streamlit • Machine Learning</p>
-            <p className="description">
-              Sophisticated neural network model achieving 95% accuracy in spam detection using advanced NLP techniques. 
-              The system employs LSTM networks, word embeddings, and feature engineering to analyze message patterns. 
-              Includes real-time classification, adaptive learning capabilities, and comprehensive preprocessing pipeline 
-              with tokenization, stemming, and TF-IDF vectorization for optimal performance.
-            </p>
-            <div className="project-links">
-              <a href="https://github.com/Mr-J12/SMSspamdectection" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-                📂 GitHub
-              </a>
-              <a href="https://smsspamdectection.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
-                🚀 Live Link
-              </a>
-            </div>
-          </div>
-        </div>
-
           <div className="project-item">
           <img src="512.jpg" alt="Serenify Mental Healthcare Website" />
           <div className="project-details">
@@ -534,13 +511,37 @@ useEffect(() => {
               <h2>Crystalytics [Diamond Carat Predictor]</h2>
               <p className="tech-stack">Python • Streamlit • Machine Learning • Regression</p>
               <p className="description">
-               A data-driven approach to valuing a diamond, this project utilizes a machine learning model to accurately predict carat weight. The model analyzes physical dimensions and key quality metrics to provide transparent and reliable predictions. It serves as a powerful tool for buyers and sellers, making the diamond valuation process more efficient and accessible.
+               A data-driven approach to valuing a diamond, this project utilizes a machine learning model to accurately predict carat weight. 
+               The model analyzes physical dimensions and key quality metrics to provide transparent and reliable predictions. 
+               It serves as a powerful tool for buyers and sellers, making the diamond valuation process more efficient and accessible.
               </p>
               <div className="project-links">
                 <a href="https://github.com/Mr-J12/DiamondCaratPrediction" className="project-link github-link" target="_blank" rel="noopener noreferrer">
               📂 GitHub
               </a>
                 <a href="https://diacarpredmod.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
+                  🚀 Live Link
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="project-item">
+          <img src="st.png" alt="RiskGuard Stroke Prediction Model" />
+          <div className="project-details">
+              <div className="project-status-live">Live</div>
+              <h2>RiskGuard [Stroke Prediction Model]</h2>
+              <p className="tech-stack">Python • Streamlit • Machine Learning • Classification</p>
+              <p className="description">
+                An advanced ensemble machine learning model designed to predict the likelihood of stroke occurrence based on various health and lifestyle factors.
+                Utilizing classification algorithms, the model analyzes patient data to identify high-risk individuals, enabling early intervention and preventive care.
+                and comprehensive preprocessing with feature scaling, encoding, and imbalance handling techniques.
+              </p>
+              <div className="project-links">
+                <a href="https://github.com/Mr-J12/stroke-prediction-sv" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+              📂 GitHub
+              </a>
+                <a href="https://strokepredmod.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
                   🚀 Live Link
                 </a>
               </div>
@@ -571,13 +572,36 @@ useEffect(() => {
         </div>
 
         <div className="project-item">
+          <img src="sms.jpg" />
+          <div className="project-details">
+            <div className="project-status-live">Live</div>
+            <h2>TextGuard [SMS Spam Detector]</h2>
+            <p className="tech-stack">Scikit-learn • Python • Streamlit • Machine Learning</p>
+            <p className="description">
+              Sophisticated neural network model achieving 95% accuracy in spam detection using advanced NLP techniques. 
+              The system employs LSTM networks, word embeddings, and feature engineering to analyze message patterns. 
+              Includes real-time classification, adaptive learning capabilities, and comprehensive preprocessing pipeline 
+              with tokenization, stemming, and TF-IDF vectorization for optimal performance.
+            </p>
+            <div className="project-links">
+              <a href="https://github.com/Mr-J12/SMSspamdectection" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+                📂 GitHub
+              </a>
+              <a href="https://smsspamdectection.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
+                🚀 Live Link
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="project-item">
           <img src="9.jpg" />
           <div className="project-details">
             <div className="project-status-beta">Beta</div>
             <h2>EDV Valut [Intelligent Data Validator]</h2>
             <p className="tech-stack">Data Science • React • TypeScript • Supabase</p>
             <p className="description">
-              AI-driven data validation system that uses machine learning algorithms to ensure data quality and consistency. 
+              data driven validation system that uses machine learning algorithms to ensure data quality and consistency. 
               The platform employs anomaly detection, pattern recognition, and predictive validation to identify data inconsistencies. 
               Features include automated data cleansing, intelligent error correction suggestions, and real-time validation 
               with cloud-based storage and synchronization capabilities.

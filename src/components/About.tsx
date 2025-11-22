@@ -315,6 +315,17 @@ useEffect(() => {
 
           <div className="experience-item">
             <div className="experience-header">
+              <h2>Data Science Intern | Null Class</h2>
+              <span>Oct 2025 - Nov 2025</span>
+            </div>
+            <ul>
+              <li>Developed and deployed a predictive machine learning model i.e car color prediction model, nationality detection model to forecast object detection and face recognition with 80% accuracy.</li>
+              <li>•	Engineered features and performed extensive data cleaning/preprocessing on large-scale datasets and Visualized the model performance using different evaluation metrics.</li>
+            </ul>
+          </div>
+
+          <div className="experience-item">
+            <div className="experience-header">
               <h2>Graphics Designer | AIEC Society (IITM)</h2>
               <span>Aug 2025 - Present</span>
             </div>
