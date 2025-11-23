@@ -549,7 +549,7 @@ useEffect(() => {
           </div>
 
           <div className="project-item">
-          <img src="st.png" alt="Car Color Detector & Counter" />
+          <img src="cc.png" alt="Car Color Detector & Counter" />
           <div className="project-details">
               <div className="project-status-live">Live</div>
               <h2>CCDC-X  [Car Color Detector & Counter]</h2>
