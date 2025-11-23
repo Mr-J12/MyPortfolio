@@ -327,7 +327,7 @@ useEffect(() => {
           <div className="experience-item">
             <div className="experience-header">
               <h2>Research Intern  | Suvidha Foundation</h2>
-              <span>Oct 2025 - Nov 2025</span>
+              <span>Sept 2025 - Oct 2025</span>
             </div>
             <ul>
               <li>Completed a research internship focused on Large Language Models (LLMs) and modern transformer architectures such as encoder-only, decoder-only, and encoder-decoder transformers.</li>
