@@ -320,7 +320,18 @@ useEffect(() => {
             </div>
             <ul>
               <li>Developed and deployed a predictive machine learning model i.e car color prediction model, nationality detection model to forecast object detection and face recognition with 80% accuracy.</li>
-              <li>•	Engineered features and performed extensive data cleaning/preprocessing on large-scale datasets and Visualized the model performance using different evaluation metrics.</li>
+              <li>Engineered features and performed extensive data cleaning/preprocessing on large-scale datasets and Visualized the model performance using different evaluation metrics.</li>
+            </ul>
+          </div>
+
+          <div className="experience-item">
+            <div className="experience-header">
+              <h2>Research Intern  | Suvidha Foundation</h2>
+              <span>Oct 2025 - Nov 2025</span>
+            </div>
+            <ul>
+              <li>Completed a research internship focused on Large Language Models (LLMs) and modern transformer architectures such as encoder-only, decoder-only, and encoder-decoder transformers.</li>
+              <li>Strengthened conceptual foundations in deep learning–based language systems without hands-on project implementation.</li>
             </ul>
           </div>
 
