@@ -548,6 +548,28 @@ useEffect(() => {
             </div>
           </div>
 
+          <div className="project-item">
+          <img src="st.png" alt="Car Color Detector & Counter" />
+          <div className="project-details">
+              <div className="project-status-live">Live</div>
+              <h2>CCDC-X  [Car Color Detector & Counter]</h2>
+              <p className="tech-stack">Python • Streamlit • Machine Learning • Classification</p>
+              <p className="description">
+                a pre-trained yolov8 model to detect car colors from images. The system utilizes computer vision techniques to accurately identify and count vehicles based on their color attributes.
+                it takes an input image, processes it through the model, and outputs the detected car colors along with their respective counts. 
+                its uses thresholding, contour detection, and color classification algorithms to achieve high accuracy in diverse lighting conditions.
+              </p>
+              <div className="project-links">
+                <a href="https://github.com/Mr-J12/car-color-detector" className="project-link github-link" target="_blank" rel="noopener noreferrer">
+              📂 GitHub
+              </a>
+                <a href="https://carcolorpred.streamlit.app" className="project-link live-link" target="_blank" rel="noopener noreferrer">
+                  🚀 Live Link
+                </a>
+              </div>
+            </div>
+          </div>
+
         <div className="project-item">
           <img src="222.jpg" />
           <div className="project-details">
