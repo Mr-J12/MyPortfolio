@@ -88,7 +88,7 @@ function Footer() {
           transform: translateY(-5px);
           border-color: rgba(59, 130, 246, 0.5);
           box-shadow: 0 15px 35px rgba(59, 130, 246, 0.3);
-          color: #3b82f6;
+          color: #ffffffff;
         }
 
         .social-icon {
@@ -101,15 +101,21 @@ function Footer() {
         }
 
         .linkedin-link:hover {
-          color: #0077b5;
-          border-color: rgba(0, 119, 181, 0.5);
-          box-shadow: 0 15px 35px rgba(0, 119, 181, 0.3);
+          color: #03a7ffff;
+          border-color: rgba(0, 118, 181, 1);
+          box-shadow: 0 10px 35px rgba(0, 118, 181, 1);
         }
 
         .github-link:hover {
-          color: #f0f6fc;
-          border-color: rgba(240, 246, 252, 0.5);
-          box-shadow: 0 15px 35px rgba(240, 246, 252, 0.2);
+          color: #bb47ffff;
+          border-color: #bb47ffff;
+          box-shadow: 0 10px 35px rgba(163, 71, 255, 1);
+        }
+
+        .resume-link:hover {
+          color: #fed563ff;
+          border-color: #fed563ff;
+          box-shadow: 0 10px 35px #ffecb7ff;
         }
 
         .footer-divider {
@@ -214,7 +220,7 @@ function Footer() {
           </p>
           
           <div className="social-links">
-            <a 
+            <a
               href="https://www.linkedin.com/in/yashwant-singh-rawat-695348320/" 
               className="social-link linkedin-link"
               target="_blank" 
@@ -231,6 +237,15 @@ function Footer() {
             >
               <span className="social-icon">🗃️</span>
               GitHub
+            </a>
+            <a 
+              href="/public/resume.pdf" 
+              className="social-link resume-link"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <span className="social-icon">📝</span>
+              Resume
             </a>
           </div>
 
