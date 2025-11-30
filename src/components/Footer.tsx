@@ -239,10 +239,9 @@ function Footer() {
               GitHub
             </a>
             <a 
-              href="/public/resume.pdf" 
+              href="/resume.pdf" 
+              download="Yashwant_Singh_Rawat_Resume.pdf" 
               className="social-link resume-link"
-              target="_blank" 
-              rel="noopener noreferrer"
             >
               <span className="social-icon">📝</span>
               Resume
