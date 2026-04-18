@@ -1,5 +1,33 @@
 import { useState, useRef, useEffect } from 'react';
 
+// Vendor-prefixed Speech Recognition types (not available as globals in TS strict mode)
+interface ISpeechRecognitionResult {
+  readonly transcript: string;
+  readonly confidence: number;
+}
+interface ISpeechRecognitionResultList {
+  readonly length: number;
+  item(index: number): ISpeechRecognitionResult[];
+  [index: number]: ISpeechRecognitionResult[];
+}
+interface ISpeechRecognitionEvent extends Event {
+  readonly results: ISpeechRecognitionResultList;
+}
+interface ISpeechRecognition extends EventTarget {
+  lang: string;
+  interimResults: boolean;
+  onresult: ((e: ISpeechRecognitionEvent) => void) | null;
+  onerror: (() => void) | null;
+  start(): void;
+  stop(): void;
+}
+declare global {
+  interface Window {
+    SpeechRecognition?: new () => ISpeechRecognition;
+    webkitSpeechRecognition?: new () => ISpeechRecognition;
+  }
+}
+
 // ===== PORTFOLIO KNOWLEDGE BASE =====
 const KB: Record<string, string> = {
   default:
@@ -121,7 +149,7 @@ export default function Chatbot() {
   const [voiceEnabled, setVoiceEnabled] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionRef = useRef<ISpeechRecognition | null>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -172,24 +200,22 @@ export default function Chatbot() {
 
   // Voice input
   const startVoice = () => {
-    const SpeechRecognition =
-      (window as typeof window & { SpeechRecognition?: typeof window.SpeechRecognition; webkitSpeechRecognition?: typeof window.SpeechRecognition }).SpeechRecognition ||
-      (window as typeof window & { webkitSpeechRecognition?: typeof window.SpeechRecognition }).webkitSpeechRecognition;
+    const SR = window.SpeechRecognition ?? window.webkitSpeechRecognition;
 
-    if (!SpeechRecognition) {
+    if (!SR) {
       alert('Voice input is not supported in your browser.');
       return;
     }
 
-    const recog = new SpeechRecognition();
+    const recog = new SR();
     recog.lang = 'en-US';
     recog.interimResults = false;
-    recog.onresult = (e: SpeechRecognitionEvent) => {
+    recog.onresult = (e: ISpeechRecognitionEvent) => {
       const transcript = e.results[0][0].transcript;
       setInput(transcript);
       sendMessage(transcript);
     };
-    recog.onerror = () => {};
+    recog.onerror = () => { };
     recog.start();
     recognitionRef.current = recog;
   };
