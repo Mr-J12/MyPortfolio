@@ -230,7 +230,7 @@ function Footer() {
 
             {/* Resume */}
             <a
-              href="/resume.pdf"
+              href="/Yash resume 1P.pdf"
               download="Yashwant_Singh_Rawat_Resume.pdf"
               className="social-link resume"
               id="footer-resume"
