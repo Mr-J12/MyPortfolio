@@ -1,68 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ===== CSS VARIABLES ===== */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Purple Palette */
+  --purple-900: #0a0010;
+  --purple-800: #0d001a;
+  --purple-700: #160025;
+  --purple-600: #1e0035;
+  --purple-500: #2d004f;
+  --purple-400: #4a0080;
+
+  /* Neon Accents */
+  --neon-purple: #a855f7;
+  --neon-violet: #8b5cf6;
+  --neon-pink: #c084fc;
+  --neon-blue: #818cf8;
+  --neon-cyan: #67e8f9;
+
+  /* Glass */
+  --glass-bg: rgba(168, 85, 247, 0.07);
+  --glass-border: rgba(168, 85, 247, 0.2);
+  --glass-hover: rgba(168, 85, 247, 0.15);
+  --glass-heavy: rgba(10, 0, 20, 0.85);
+
+  /* Text */
+  --text-primary: #f0e6ff;
+  --text-secondary: #c4b5fd;
+  --text-muted: #7c6fa0;
+
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, #7c3aed, #a855f7, #c084fc);
+  --grad-hero: linear-gradient(135deg, #0a0010 0%, #160025 40%, #0d001a 100%);
+  --grad-card: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(168,85,247,0.05));
+
+  /* Glows */
+  --glow-sm: 0 0 10px rgba(168, 85, 247, 0.4);
+  --glow-md: 0 0 25px rgba(168, 85, 247, 0.5);
+  --glow-lg: 0 0 50px rgba(168, 85, 247, 0.4), 0 0 100px rgba(124, 58, 237, 0.2);
+  --glow-card: 0 0 30px rgba(168, 85, 247, 0.3), 0 25px 50px rgba(0, 0, 0, 0.5);
+
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--purple-900);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* ===== RESET ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: var(--purple-900);
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+a {
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: var(--neon-purple);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+a:hover {
+  color: var(--neon-pink);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--purple-800);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7c3aed, #a855f7);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a855f7, #c084fc);
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: var(--text-primary);
+}
+
+/* ===== UTILITY ===== */
+.section-heading {
+  font-size: clamp(2em, 4vw, 3em);
+  font-weight: 800;
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff, #c084fc, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.section-subheading {
+  font-size: 1.1em;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 60px;
+  font-weight: 400;
+}
+
+.neon-label {
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--neon-purple);
+  text-shadow: var(--glow-sm);
+  display: block;
+  text-align: center;
+  margin-bottom: 12px;
 }

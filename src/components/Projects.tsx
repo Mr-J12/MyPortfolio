@@ -1,669 +1,476 @@
 import { useEffect, useRef } from 'react';
 
+const PROJECTS = [
+  {
+    img: '123.jpg',
+    status: 'Live',
+    statusColor: '#10b981',
+    title: 'Void Whispers',
+    subtitle: 'Paranormal Website',
+    stack: ['TypeScript', 'React', 'Node.js', 'Supabase'],
+    desc: 'Advanced AI system analyzing paranormal phenomena using NLP and computer vision. Deep learning models categorize supernatural reports, identify patterns in eyewitness accounts, and provide data-driven insights into unexplained events.',
+    github: 'https://github.com/Mr-J12/horrorweb',
+    live: 'https://voidwhispers.vercel.app/',
+  },
+  {
+    img: '622.jpg',
+    status: 'Live',
+    statusColor: '#10b981',
+    title: 'Serenify',
+    subtitle: 'Mental Healthcare Website',
+    stack: ['TypeScript', 'React', 'Node.js', 'Supabase'],
+    desc: 'A safe and welcoming space for mental well-being. Offers personalized therapy sessions, mood tracking, a supportive community, and comprehensive features for users on their journey to mental wellness.',
+    github: 'https://github.com/Mr-J12/Serenify',
+    live: 'https://serenify-nine.vercel.app/',
+  },
+  {
+    img: '512.jpg',
+    status: 'Live',
+    statusColor: '#10b981',
+    title: 'Crystalytics',
+    subtitle: 'Diamond Carat Predictor',
+    stack: ['Python', 'Streamlit', 'Machine Learning', 'Regression'],
+    desc: 'Data-driven diamond valuation using ML regression. Analyzes physical dimensions and quality metrics to predict carat weight — a powerful tool for buyers and sellers making valuation efficient and accessible.',
+    github: 'https://github.com/Mr-J12/DiamondCaratPrediction',
+    live: 'https://diacarpredmod.streamlit.app/',
+  },
+  {
+    img: 'st.png',
+    status: 'Live',
+    statusColor: '#10b981',
+    title: 'RiskGuard',
+    subtitle: 'Stroke Prediction Model',
+    stack: ['Python', 'Streamlit', 'Machine Learning', 'Classification'],
+    desc: 'Advanced ensemble ML model predicting stroke likelihood from health and lifestyle factors. Identifies high-risk individuals with classification algorithms, feature scaling, encoding, and imbalance-handling techniques.',
+    github: 'https://github.com/Mr-J12/stroke-prediction-sv',
+    live: 'https://strokepredmod.streamlit.app/',
+  },
+  {
+    img: 'cc.png',
+    status: 'Live',
+    statusColor: '#10b981',
+    title: 'CCDC-X',
+    subtitle: 'Car Color Detector & Counter',
+    stack: ['Python', 'Streamlit', 'YOLOv8', 'Computer Vision'],
+    desc: 'Pre-trained YOLOv8 model detecting car colors from images. Uses thresholding, contour detection, and color classification to achieve high accuracy in diverse lighting conditions, outputting detected colors with counts.',
+    github: 'https://github.com/Mr-J12/car-color-detector',
+    live: 'https://carcolorpred.streamlit.app',
+  },
+  {
+    img: '222.jpg',
+    status: 'Live',
+    statusColor: '#10b981',
+    title: 'Nix',
+    subtitle: 'Mental Healthcare Bot',
+    stack: ['Sentiment Analysis', 'Python', 'Streamlit', 'NLP'],
+    desc: 'Empathetic AI chatbot powered by advanced NLP and sentiment analysis for mental health support. Features mood tracking, crisis detection, and evidence-based therapeutic interventions with secure privacy protection.',
+    github: 'https://github.com/Mr-J12/mentalhealthcareBot',
+    live: 'https://mentalhealthcarebot.streamlit.app/',
+  },
+  {
+    img: 'sms.jpg',
+    status: 'Live',
+    statusColor: '#10b981',
+    title: 'TextGuard',
+    subtitle: 'SMS Spam Detector',
+    stack: ['Scikit-learn', 'Python', 'Streamlit', 'LSTM'],
+    desc: 'Neural network achieving 95% accuracy in spam detection using advanced NLP. Employs LSTM networks, word embeddings, and feature engineering with tokenization, stemming, and TF-IDF vectorization.',
+    github: 'https://github.com/Mr-J12/SMSspamdectection',
+    live: 'https://smsspamdectection.streamlit.app/',
+  },
+  {
+    img: '9.jpg',
+    status: 'Beta',
+    statusColor: '#f59e0b',
+    title: 'EDV Vault',
+    subtitle: 'Intelligent Data Validator',
+    stack: ['Data Science', 'React', 'TypeScript', 'Supabase'],
+    desc: 'Data-driven validation system using ML algorithms for data quality and consistency. Employs anomaly detection, pattern recognition, and predictive validation with automated cleansing and intelligent error correction.',
+    github: 'https://github.com/Mr-J12/EDV',
+    live: null,
+  },
+  {
+    img: '555.jpg',
+    status: 'In Dev',
+    statusColor: '#ef4444',
+    title: 'Autonomous AI Platform',
+    subtitle: 'AI Automation System',
+    stack: ['Deep Learning', 'Computer Vision', 'NLP', 'Next.js', 'PostgreSQL'],
+    desc: 'Comprehensive AI automation platform combining computer vision, NLP, and predictive analytics to automate complex workflows with intelligent decision trees, adaptive learning, and real-time performance monitoring.',
+    github: 'https://github.com/Mr-J12/AI-app',
+    live: null,
+  },
+];
+
 function Projects() {
-  const projectsRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-  const scrollToContent = () => {
-    document.getElementById('reach3')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0) scale(1)';
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
+    const cards = document.querySelectorAll('.proj-card');
+    cards.forEach((card, i) => {
+      if (card instanceof HTMLElement) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px) scale(0.97)';
+        card.style.transition = `all 0.7s ease ${i * 0.1}s`;
+        observer.observe(card);
+      }
+    });
 
-  const projectItems = document.querySelectorAll('.project-item');
-  projectItems.forEach((item, index) => {
-    if (item instanceof HTMLElement) {
-      item.style.opacity = '0';
-      item.style.transform = 'translateY(50px)';
-      item.style.transition = `all 0.8s ease ${index * 0.2}s`;
-      observer.observe(item);
-    }
-  });
-
-  return () => {
-    projectItems.forEach(item => observer.unobserve(item));
-  };
-}, []);
+    return () => cards.forEach(c => observer.unobserve(c));
+  }, []);
 
   return (
     <>
       <style>{`
-        header {
-          width: 100vw;
-          height: 100vh;
-          margin: 0;
-          padding: 0;
-          position: relative;
-          background: var(--header-bg);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-        }
-
-        header::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: 
-            radial-gradient(circle at 25% 75%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 75% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-          animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.8; }
-        }
-
-        .h-text {
-          max-width: 800px;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-          text-align: center;
-          color: var(--text-color);
-          z-index: 10;
-        }
-
-        .h-text h1 {
-          font-size: clamp(2.5em, 5vw, 4em);
-          margin-bottom: 30px;
-          font-weight: 800;
-          background: linear-gradient(135deg, #ffffff, var(--accent-color), var(--secondary-accent));
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: slideIn 1s ease-out;
-        }
-
-        .h-text p {
-          font-size: 1.3em;
-          margin-bottom: 40px;
-          color: var(--subtitle-color);
-          animation: fadeIn 1s ease-out 0.3s both;
-        }
-
-        @keyframes slideIn {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        #scrollButton {
-          padding: 16px 32px;
-          font-size: 18px;
-          background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
-          color: white;
-          border: none;
-          border-radius: 50px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-weight: 600;
-          position: relative;
-          overflow: hidden;
-          animation: fadeIn 1s ease-out 0.6s both;
-        }
-
-        #scrollButton::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          transition: left 0.5s ease;
-        }
-
-        #scrollButton:hover::before {
-          left: 100%;
-        }
-
-        #scrollButton:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 15px 35px var(--work-item-hover-shadow);
-        }
-
-        .projects-container {
-          background: var(--wrapper-bg);
-          padding: 80px 5%;
+        /* ===== PROJECTS SECTION ===== */
+        .projects-section {
+          padding: 100px 6%;
+          background: linear-gradient(180deg, #0d001a, #0a0010 50%, #0d001a);
           position: relative;
         }
 
-        .projects-container::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 1px;
-          background: var(--wrapper-border);
-        }
-
-        .project-item {
-          display: flex;
-          background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
-          backdrop-filter: blur(20px);
-          margin-bottom: 40px;
-          border-radius: 25px;
-          overflow: hidden;
-          transition: all 0.4s ease;
-          position: relative;
-          border: 1px solid rgba(6, 182, 212, 0.2);
-        }
-
-        .project-item::before {
+        .projects-section::before {
           content: '';
           position: absolute;
           top: 0;
           left: 0;
-          width: 6px;
-          height: 100%;
-          background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .project-item:hover::before {
-          opacity: 1;
-        }
-
-        .project-item::after {
-          content: "";
-          position: absolute;
-          top: 0;
           right: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(139, 92, 246, 0.05));
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          z-index: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent);
         }
 
-        .project-item:hover::after {
-          opacity: 1;
+        .projects-header {
+          text-align: center;
+          margin-bottom: 70px;
         }
 
-        .project-item:hover {
-          transform: translateY(-15px);
-          box-shadow: 0 30px 60px rgba(6, 182, 212, 0.2);
-          border-color: rgba(6, 182, 212, 0.5);
-        }
-
-        .project-item img {
-          width: 450px;
-          height: 440px;
-          object-fit: cover;
-          transition: transform 0.4s ease;
-          z-index: 1;
-        }
-
-        .project-item:hover img {
-          transform: scale(1.05);
-        }
-
-        .project-details {
-          padding: 40px;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          z-index: 1;
-        }
-
-        .project-details h2 {
-          color: #ffffff;
-          font-size: 32px;
-          margin-bottom: 20px;
+        .projects-header .neon-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(168,85,247,0.08);
+          border: 1px solid rgba(168,85,247,0.25);
+          border-radius: 50px;
+          padding: 6px 20px;
+          font-size: 12px;
           font-weight: 700;
-          transition: color 0.3s ease;
-          background: linear-gradient(135deg, #ffffff, #06b6d4);
+          color: #a855f7;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          margin-bottom: 16px;
+          box-shadow: 0 0 15px rgba(168,85,247,0.1);
+        }
+
+        .projects-header h2 {
+          font-size: clamp(2em, 4vw, 2.8em);
+          font-weight: 800;
+          background: linear-gradient(135deg, #fff, #c084fc, #8b5cf6);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
+          margin-bottom: 14px;
         }
 
-        .tech-stack {
-          color: #06b6d4;
-          font-size: 18px;
-          margin-bottom: 25px;
+        .projects-header p {
+          color: #8e80b0;
+          font-size: 1.05em;
+        }
+
+        /* ===== PROJECT GRID ===== */
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+          gap: 28px;
+          max-width: 1250px;
+          margin: 0 auto;
+        }
+
+        /* ===== PROJECT CARD ===== */
+        .proj-card {
+          background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(168,85,247,0.05));
+          border: 1px solid rgba(168,85,247,0.2);
+          border-radius: 22px;
+          overflow: hidden;
+          transition: all 0.45s ease;
+          position: relative;
+          cursor: default;
+          backdrop-filter: blur(12px);
+          display: flex;
+          flex-direction: column;
+        }
+
+        .proj-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(192,132,252,0.05));
+          opacity: 0;
+          transition: opacity 0.35s ease;
+          z-index: 0;
+        }
+
+        .proj-card:hover::before { opacity: 1; }
+
+        .proj-card:hover {
+          transform: translateY(-12px) scale(1.01);
+          border-color: rgba(168,85,247,0.55);
+          box-shadow: 0 0 50px rgba(168,85,247,0.25), 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        /* Image wrapper */
+        .proj-img-wrap {
+          position: relative;
+          overflow: hidden;
+          height: 220px;
+          flex-shrink: 0;
+        }
+
+        .proj-img-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+          display: block;
+        }
+
+        .proj-card:hover .proj-img-wrap img {
+          transform: scale(1.08);
+        }
+
+        /* Gradient overlay on image */
+        .proj-img-wrap::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 80px;
+          background: linear-gradient(transparent, rgba(10,0,20,0.9));
+        }
+
+        /* Status badge */
+        .proj-status {
+          position: absolute;
+          top: 14px;
+          right: 14px;
+          padding: 5px 14px;
+          border-radius: 50px;
+          font-size: 11px;
+          font-weight: 700;
+          z-index: 2;
+          backdrop-filter: blur(8px);
+          letter-spacing: 0.5px;
+        }
+
+        /* Card body */
+        .proj-body {
+          padding: 24px 26px;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          position: relative;
+          z-index: 1;
+        }
+
+        .proj-title {
+          font-size: 1.2em;
+          font-weight: 800;
+          background: linear-gradient(135deg, #fff, #c084fc);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 2px;
+          line-height: 1.3;
+        }
+
+        .proj-subtitle {
+          font-size: 0.82em;
+          color: #a855f7;
           font-weight: 600;
+          margin-bottom: 12px;
+          letter-spacing: 0.5px;
+        }
+
+        /* Tech stack pills */
+        .proj-stack {
           display: flex;
           flex-wrap: wrap;
-          gap: 12px;
-          align-items: center;
+          gap: 7px;
+          margin-bottom: 14px;
         }
 
-        .tech-stack::before {
-          content: '🤖';
-          margin-right: 8px;
-          font-size: 20px;
+        .proj-tag {
+          background: rgba(168,85,247,0.12);
+          border: 1px solid rgba(168,85,247,0.25);
+          border-radius: 50px;
+          padding: 3px 11px;
+          font-size: 11px;
+          font-weight: 600;
+          color: #c084fc;
+          letter-spacing: 0.3px;
+          transition: all 0.3s ease;
         }
 
-        .description {
-          color: #94a3b8;
-          font-size: 17px;
+        .proj-card:hover .proj-tag {
+          border-color: rgba(168,85,247,0.45);
+          background: rgba(168,85,247,0.18);
+          box-shadow: 0 0 8px rgba(168,85,247,0.2);
+        }
+
+        .proj-desc {
+          font-size: 0.88em;
+          color: #8e80b0;
           line-height: 1.7;
-          margin-bottom: 30px;
+          margin-bottom: 20px;
+          flex: 1;
           transition: color 0.3s ease;
         }
 
-        .project-item:hover .description {
-          color: #e2e8f0;
-        }
+        .proj-card:hover .proj-desc { color: #b3a4d6; }
 
-        .project-links {
+        /* Links */
+        .proj-links {
           display: flex;
-          gap: 20px;
-          margin-top: auto;
+          gap: 12px;
+          flex-wrap: wrap;
         }
 
-        .project-link {
-          padding: 12px 24px;
-          border-radius: 25px;
-          text-decoration: none;
+        .proj-link {
+          padding: 9px 20px;
+          border-radius: 50px;
+          font-size: 13px;
           font-weight: 600;
-          transition: all 0.3s ease;
+          text-decoration: none;
           display: inline-flex;
           align-items: center;
-          gap: 10px;
+          gap: 7px;
+          transition: all 0.3s ease;
           position: relative;
           overflow: hidden;
+          font-family: 'Poppins', sans-serif;
         }
 
-        .project-link::before {
-          content: "";
+        .proj-link::before {
+          content: '';
           position: absolute;
-          top: 0;
+          inset: 0;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
           left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
           transition: left 0.5s ease;
+          border-radius: inherit;
         }
 
-        .project-link:hover::before {
-          left: 100%;
+        .proj-link:hover::before { left: 100%; }
+
+        .proj-link-gh {
+          background: rgba(30,20,50,0.9);
+          color: #e0d4ff;
+          border: 1px solid rgba(168,85,247,0.3);
         }
 
-        .github-link {
-          background: linear-gradient(135deg, #374151, #1f2937);
-          color: white;
-          border: 1px solid rgba(75, 85, 99, 0.5);
-        }
-
-        .github-link:hover {
-          background: linear-gradient(135deg, #4b5563, #374151);
+        .proj-link-gh:hover {
+          border-color: rgba(168,85,247,0.6);
+          color: #c084fc;
+          box-shadow: 0 0 18px rgba(168,85,247,0.3);
           transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-          color: #00f2ffff;
         }
 
-        .live-link {
-          background: linear-gradient(135deg, #00d9ffff, #8b5cf6);
-          color: white;
-        }
-
-        .live-link:hover {
-          background: linear-gradient(135deg, #00718eff, #7c3aed);
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
-          color: #08fad6ff;
-        }
-
-        .project-status-live {
-          position: absolute;
-          top: 25px;
-          right: 25px;
-          color: white;
-          background: linear-gradient(135deg, #10b981, #059669);
-          padding: 8px 16px;
-          border-radius: 20px;
-          font-size: 12px;
-          font-weight: 700;
-          z-index: 2;
-          box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        }
-
-        .project-status-beta {
-          position: absolute;
-          top: 25px;
-          right: 25px;
-          color: white;
-          background: linear-gradient(135deg, #f59e0b, #d97706);
-          padding: 8px 16px;
-          border-radius: 20px;
-          font-size: 12px;
-          font-weight: 700;
-          z-index: 2;
-          box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-        }
-
-        .project-status-alpha {
-          position: absolute;
-          top: 25px;
-          right: 25px;
-          color: white;
-          background: linear-gradient(135deg, #ef4444, #dc2626);
-          padding: 8px 16px;
-          border-radius: 20px;
-          font-size: 12px;
-          font-weight: 700;
-          z-index: 2;
-          box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-        }
-
-        .back-to-top {
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+        .proj-link-live {
+          background: linear-gradient(135deg, #7c3aed, #a855f7);
           color: white;
           border: none;
-          border-radius: 50%;
-          width: 60px;
-          height: 60px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
-          z-index: 1000;
-          font-size: 20px;
         }
 
-        .back-to-top:hover {
-          transform: translateY(-5px) scale(1.1);
-          box-shadow: 0 15px 35px rgba(6, 182, 212, 0.4);
+        .proj-link-live:hover {
+          opacity: 0.9;
+          box-shadow: 0 0 25px rgba(168,85,247,0.5);
+          transform: translateY(-2px);
+          color: white;
         }
 
-        /* Responsive Design */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-          .h-text h1 {
-            font-size: 2.5em;
-          }
-
-          .projects-container {
-            padding: 60px 20px;
-          }
-
-          .project-item {
-            flex-direction: column;
-            margin-bottom: 40px;
-          }
-
-          .project-item img {
-            width: 100%;
-            height: 280px;
-          }
-
-          .project-details {
-            padding: 30px;
-          }
-
-          .project-details h2 {
-            font-size: 26px;
-          }
-
-          .tech-stack {
-            font-size: 16px;
-          }
-
-          .project-links {
-            flex-direction: column;
-            gap: 15px;
-          }
-
-          .project-link {
-            text-align: center;
-            justify-content: center;
-          }
+          .projects-section { padding: 70px 5%; }
+          .projects-grid { grid-template-columns: 1fr; gap: 22px; }
+          .proj-img-wrap { height: 190px; }
         }
 
-        /* Alternating Layout */
-        .project-item:nth-child(even) {
-          flex-direction: row-reverse;
-        }
-
-        @media (max-width: 768px) {
-          .project-item:nth-child(even) {
-            flex-direction: column;
-          }
+        @media (max-width: 480px) {
+          .proj-body { padding: 20px; }
         }
       `}</style>
 
-      <header>
-        <section className="h-text">
-          <h1>Project Showcase</h1>
-          <p>Innovative machine learning solutions and intelligent applications</p>
-          <button id="scrollButton" onClick={scrollToContent}>
-            Explore AI Projects
-          </button>
-        </section>
-      </header>
-
-      <div id="reach3" ref={projectsRef} className="projects-container" data-section="projects">
-        <div className="project-item">
-          <img src="123.jpg"/>
-          <div className="project-details">
-            <div className="project-status-live">Live</div>
-            <h2>Void Whispers [Paranormal website]</h2>
-            <p className="tech-stack">TypeScript • React • Node.js • Supabase</p>
-            <p className="description">
-              Advanced AI system that analyzes paranormal phenomena using natural language processing and computer vision. 
-              The platform employs deep learning models to categorize supernatural reports, identify patterns in eyewitness accounts, 
-              and provide data-driven insights into unexplained events. Features include sentiment analysis of testimonials, 
-              image recognition for anomaly detection, and predictive modeling for phenomenon classification.
-            </p>
-            <div className="project-links">
-              <a href="https://github.com/Mr-J12/horrorweb" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-                📂 GitHub
-              </a>
-              <a href="https://voidwhispers.vercel.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
-                🚀 Live Link
-              </a>
-            </div>
-          </div>
+      <section id="reach3" ref={sectionRef} className="projects-section">
+        <div className="projects-header">
+          <div className="neon-tag">✦ My Work</div>
+          <h2>Project Showcase</h2>
+          <p>Innovative ML solutions and intelligent applications I've built</p>
         </div>
 
-      <div className="project-item">
-        <img src="622.jpg" alt="Serenify Mental Healthcare Website" />
-        <div className="project-details">
-          <div className="project-status-live">Live</div>
-          <h2>Serenify [Mental Healthcare Website]</h2>
-          <p className="tech-stack">TypeScript • React • Node.js • Supabase</p>
-          <p className="description">
-            A safe and welcoming space to find the guidance and support you need on your journey to mental well-being. This comprehensive platform offers a wide range of features to support users on their journey to mental wellness, including personalized therapy sessions, mood tracking, and a supportive community.
-          </p>
-          <div className="project-links">
-            <a href="https://github.com/Mr-J12/Serenify" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-              📂 GitHub
-            </a>
-            <a href="https://serenify-nine.vercel.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
-                🚀 Live Link
-              </a>
-          </div>
-        </div>
-      </div>
+        <div className="projects-grid">
+          {PROJECTS.map((p, i) => (
+            <div key={i} className="proj-card">
+              <div className="proj-img-wrap">
+                <img src={`/${p.img}`} alt={p.title} />
+                <div
+                  className="proj-status"
+                  style={{
+                    background: p.statusColor + '22',
+                    color: p.statusColor,
+                    border: `1px solid ${p.statusColor}55`,
+                  }}
+                >
+                  ● {p.status}
+                </div>
+              </div>
 
-          <div className="project-item">
-          <img src="512.jpg" alt="Serenify Mental Healthcare Website" />
-          <div className="project-details">
-              <div className="project-status-live">Live</div>
-              <h2>Crystalytics [Diamond Carat Predictor]</h2>
-              <p className="tech-stack">Python • Streamlit • Machine Learning • Regression</p>
-              <p className="description">
-               A data-driven approach to valuing a diamond, this project utilizes a machine learning model to accurately predict carat weight. 
-               The model analyzes physical dimensions and key quality metrics to provide transparent and reliable predictions. 
-               It serves as a powerful tool for buyers and sellers, making the diamond valuation process more efficient and accessible.
-              </p>
-              <div className="project-links">
-                <a href="https://github.com/Mr-J12/DiamondCaratPrediction" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-              📂 GitHub
-              </a>
-                <a href="https://diacarpredmod.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
-                  🚀 Live Link
-                </a>
+              <div className="proj-body">
+                <div className="proj-title">{p.title}</div>
+                <div className="proj-subtitle">[{p.subtitle}]</div>
+                <div className="proj-stack">
+                  {p.stack.map((t, j) => (
+                    <span key={j} className="proj-tag">{t}</span>
+                  ))}
+                </div>
+                <p className="proj-desc">{p.desc}</p>
+                <div className="proj-links">
+                  <a
+                    href={p.github}
+                    className="proj-link proj-link-gh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    📂 GitHub
+                  </a>
+                  {p.live && (
+                    <a
+                      href={p.live}
+                      className="proj-link proj-link-live"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      🚀 Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="project-item">
-          <img src="st.png" alt="RiskGuard Stroke Prediction Model" />
-          <div className="project-details">
-              <div className="project-status-live">Live</div>
-              <h2>RiskGuard [Stroke Prediction Model]</h2>
-              <p className="tech-stack">Python • Streamlit • Machine Learning • Classification</p>
-              <p className="description">
-                An advanced ensemble machine learning model designed to predict the likelihood of stroke occurrence based on various health and lifestyle factors.
-                Utilizing classification algorithms, the model analyzes patient data to identify high-risk individuals, enabling early intervention and preventive care.
-                and comprehensive preprocessing with feature scaling, encoding, and imbalance handling techniques.
-              </p>
-              <div className="project-links">
-                <a href="https://github.com/Mr-J12/stroke-prediction-sv" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-              📂 GitHub
-              </a>
-                <a href="https://strokepredmod.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
-                  🚀 Live Link
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="project-item">
-          <img src="cc.png" alt="Car Color Detector & Counter" />
-          <div className="project-details">
-              <div className="project-status-live">Live</div>
-              <h2>CCDC-X  [Car Color Detector & Counter]</h2>
-              <p className="tech-stack">Python • Streamlit • Machine Learning • Classification</p>
-              <p className="description">
-                a pre-trained yolov8 model to detect car colors from images. The system utilizes computer vision techniques to accurately identify and count vehicles based on their color attributes.
-                it takes an input image, processes it through the model, and outputs the detected car colors along with their respective counts. 
-                its uses thresholding, contour detection, and color classification algorithms to achieve high accuracy in diverse lighting conditions.
-              </p>
-              <div className="project-links">
-                <a href="https://github.com/Mr-J12/car-color-detector" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-              📂 GitHub
-              </a>
-                <a href="https://carcolorpred.streamlit.app" className="project-link live-link" target="_blank" rel="noopener noreferrer">
-                  🚀 Live Link
-                </a>
-              </div>
-            </div>
-          </div>
-
-        <div className="project-item">
-          <img src="222.jpg" />
-          <div className="project-details">
-            <div className="project-status-live">Live</div>
-            <h2>Nix [Mental Healthcare Bot]</h2>
-            <p className="tech-stack">Sentiment Analysis • Python • Streamlit</p>
-            <p className="description">
-              Empathetic AI chatbot powered by advanced natural language processing and sentiment analysis for mental health support. 
-              The system uses transformer models, emotion recognition, and therapeutic conversation patterns to provide personalized assistance. 
-              Features include mood tracking algorithms, crisis detection mechanisms, and evidence-based therapeutic interventions 
-              with secure data handling and privacy protection.
-            </p>
-            <div className="project-links">
-              <a href="https://github.com/Mr-J12/mentalhealthcareBot" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-                📂 GitHub
-              </a>
-              <a href="https://mentalhealthcarebot.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
-                🚀 Live Link
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
-
-        <div className="project-item">
-          <img src="sms.jpg" />
-          <div className="project-details">
-            <div className="project-status-live">Live</div>
-            <h2>TextGuard [SMS Spam Detector]</h2>
-            <p className="tech-stack">Scikit-learn • Python • Streamlit • Machine Learning</p>
-            <p className="description">
-              Sophisticated neural network model achieving 95% accuracy in spam detection using advanced NLP techniques. 
-              The system employs LSTM networks, word embeddings, and feature engineering to analyze message patterns. 
-              Includes real-time classification, adaptive learning capabilities, and comprehensive preprocessing pipeline 
-              with tokenization, stemming, and TF-IDF vectorization for optimal performance.
-            </p>
-            <div className="project-links">
-              <a href="https://github.com/Mr-J12/SMSspamdectection" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-                📂 GitHub
-              </a>
-              <a href="https://smsspamdectection.streamlit.app/" className="project-link live-link" target="_blank" rel="noopener noreferrer">
-                🚀 Live Link
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="project-item">
-          <img src="9.jpg" />
-          <div className="project-details">
-            <div className="project-status-beta">Beta</div>
-            <h2>EDV Valut [Intelligent Data Validator]</h2>
-            <p className="tech-stack">Data Science • React • TypeScript • Supabase</p>
-            <p className="description">
-              data driven validation system that uses machine learning algorithms to ensure data quality and consistency. 
-              The platform employs anomaly detection, pattern recognition, and predictive validation to identify data inconsistencies. 
-              Features include automated data cleansing, intelligent error correction suggestions, and real-time validation 
-              with cloud-based storage and synchronization capabilities.
-            </p>
-            <div className="project-links">
-              <a href="https://github.com/Mr-J12/EDV" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-                📂 GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="project-item">
-          <img src="555.jpg"/>
-          <div className="project-details">
-            <div className="project-status-alpha">Under Development</div>
-            <h2>Autonomous AI Automation Platform</h2>
-            <p className="tech-stack">Deep Learning • Computer Vision • NLP • Next.js • PostgreSQL</p>
-            <p className="description">
-              Comprehensive AI automation platform leveraging multiple machine learning models for intelligent task automation. 
-              The system combines computer vision, natural language understanding, and predictive analytics to automate complex workflows. 
-              Features include intelligent decision trees, adaptive learning algorithms, multi-modal AI integration, 
-              and autonomous process optimization with real-time performance monitoring.
-            </p>
-            <div className="project-links">
-              <a href="https://github.com/Mr-J12/AI-app" className="project-link github-link" target="_blank" rel="noopener noreferrer">
-                📂 GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button 
-        className="back-to-top"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Back to top"
-      >
-        ↑
-      </button>
+      </section>
     </>
   );
 }

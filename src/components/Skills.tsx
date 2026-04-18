@@ -1,463 +1,539 @@
 import { useEffect, useRef } from 'react';
 
+const ORBIT_SKILLS = [
+  { label: 'Python',      icon: '🐍', angle: 0   },
+  { label: 'React',       icon: '⚛️', angle: 40  },
+  { label: 'TensorFlow',  icon: '🧠', angle: 80  },
+  { label: 'PyTorch',     icon: '🔥', angle: 120 },
+  { label: 'Scikit',      icon: '📊', angle: 160 },
+  { label: 'Pandas',      icon: '🐼', angle: 200 },
+  { label: 'TypeScript',  icon: '📘', angle: 240 },
+  { label: 'Streamlit',   icon: '🚀', angle: 280 },
+  { label: 'Docker',      icon: '🐳', angle: 320 },
+];
+
+const SKILL_DATA = [
+  {
+    category: 'Machine Learning & AI',
+    icon: '🤖',
+    skills: [
+      { name: 'Python',           value: 90, level: 'Expert' },
+      { name: 'TensorFlow/Keras', value: 85, level: 'Advanced' },
+      { name: 'Scikit-learn',     value: 88, level: 'Advanced' },
+      { name: 'PyTorch',          value: 75, level: 'Intermediate' },
+    ],
+  },
+  {
+    category: 'Data Science & Analytics',
+    icon: '📊',
+    skills: [
+      { name: 'Pandas / NumPy',    value: 92, level: 'Expert' },
+      { name: 'Data Visualization',value: 85, level: 'Advanced' },
+      { name: 'Statistical Analysis', value: 80, level: 'Advanced' },
+      { name: 'Feature Engineering', value: 82, level: 'Advanced' },
+    ],
+  },
+  {
+    category: 'Deep Learning & NLP',
+    icon: '🧠',
+    skills: [
+      { name: 'Neural Networks',    value: 85, level: 'Advanced' },
+      { name: 'NLP / Transformers', value: 80, level: 'Advanced' },
+      { name: 'Computer Vision',    value: 75, level: 'Intermediate' },
+      { name: 'LSTM / RNN',         value: 70, level: 'Intermediate' },
+    ],
+  },
+  {
+    category: 'Development & Deployment',
+    icon: '💻',
+    skills: [
+      { name: 'React / TypeScript',       value: 85, level: 'Advanced' },
+      { name: 'Cloud (AWS / Azure)',       value: 70, level: 'Intermediate' },
+      { name: 'Docker / MLOps',           value: 72, level: 'Intermediate' },
+      { name: 'API Development',          value: 70, level: 'Intermediate' },
+    ],
+  },
+];
+
 function Skills() {
-  const skillsRef = useRef(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
+  const orbitRef = useRef<HTMLDivElement>(null);
 
-  const scrollToContent = () => {
-    document.getElementById('reach4')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
+  // Progress bars animation
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const bars = entry.target.querySelectorAll('.progress-bar');
-            bars.forEach((bar, index) => {
+            const bars = entry.target.querySelectorAll('.skill-bar-fill');
+            bars.forEach((bar, idx) => {
               setTimeout(() => {
-                const progress = bar.getAttribute('data-progress');
-                if (progress) {
-                  const el = bar as HTMLElement;
-                  bar.classList.add('animate');
-                  el.style.setProperty('--progress-width', `${progress}%`);
-
-                  const label = el.querySelector('.progress-label') as HTMLElement | null;
-                  if (label) label.textContent = `${progress}%`;
+                if (bar instanceof HTMLElement) {
+                  const val = bar.dataset.val || '0';
+                  bar.style.width = `${val}%`;
                 }
-              }, index * 200);
+              }, idx * 150);
             });
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
-    if (skillsRef.current) {
-      observer.observe(skillsRef.current);
-    }
-
+    if (skillsRef.current) observer.observe(skillsRef.current);
     return () => observer.disconnect();
+  }, []);
+
+  // Cards fade-in
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+
+    const cards = document.querySelectorAll('.skill-cat-card');
+    cards.forEach((c, i) => {
+      if (c instanceof HTMLElement) {
+        c.style.opacity = '0';
+        c.style.transform = 'translateY(40px)';
+        c.style.transition = `all 0.7s ease ${i * 0.15}s`;
+        observer.observe(c);
+      }
+    });
+
+    return () => cards.forEach(c => observer.unobserve(c));
   }, []);
 
   return (
     <>
       <style>{`
-        header {
-          width: 100vw;
-          height: 100vh;
-          margin: 0;
-          padding: 0;
+        /* ===== SKILLS SECTION ===== */
+        .skills-section {
+          padding: 100px 6%;
+          background: linear-gradient(180deg, #0a0010, #0d001a 50%, #0a0010);
           position: relative;
-          background: var(--header-bg);
+        }
+
+        .skills-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent);
+        }
+
+        .skills-header {
+          text-align: center;
+          margin-bottom: 70px;
+        }
+
+        .skills-header .neon-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(168,85,247,0.08);
+          border: 1px solid rgba(168,85,247,0.25);
+          border-radius: 50px;
+          padding: 6px 20px;
+          font-size: 12px;
+          font-weight: 700;
+          color: #a855f7;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          margin-bottom: 16px;
+          box-shadow: 0 0 15px rgba(168,85,247,0.1);
+        }
+
+        .skills-header h2 {
+          font-size: clamp(2em, 4vw, 2.8em);
+          font-weight: 800;
+          background: linear-gradient(135deg, #fff, #c084fc, #8b5cf6);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 14px;
+        }
+
+        .skills-header p { color: #8e80b0; font-size: 1.05em; }
+
+        /* ===== ORBIT ===== */
+        .orbit-container {
           display: flex;
           align-items: center;
           justify-content: center;
-          overflow: hidden;
-        }
-
-        header::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background:
-            radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-          animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.7; }
-        }
-
-        .h-text {
-          max-width: 800px;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-          text-align: center;
-          color: white;
-          z-index: 10;
-        }
-
-        .h-text h1 {
-          font-size: clamp(2.5em, 5vw, 4em);
-          margin-bottom: 30px;
-          font-weight: 800;
-          background: linear-gradient(135deg, #ffffff, #a855f7, #3b82f6);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: slideIn 1s ease-out;
-        }
-
-        .h-text p {
-          font-size: 1.3em;
-          margin-bottom: 40px;
-          color: var(--subtitle-color);
-          animation: fadeIn 1s ease-out 0.3s both;
-        }
-
-        @keyframes slideIn {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        #scrollButton {
-          padding: 16px 32px;
-          font-size: 18px;
-          background: var(--back-to-top-bg);
-          color: white;
-          border: none;
-          border-radius: 50px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-weight: 600;
+          margin: 0 auto 80px;
           position: relative;
-          overflow: hidden;
-          animation: fadeIn 1s ease-out 0.6s both;
+          width: 400px;
+          height: 400px;
         }
 
-        #scrollButton::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          transition: left 0.5s ease;
-        }
-
-        #scrollButton:hover::before {
-          left: 100%;
-        }
-
-        #scrollButton:hover {
-          transform: translateY(-3px);
-          box-shadow: var(--back-to-top-hover-shadow);
-        }
-
-        .skills-container {
-          padding: 80px 5%;
-          background: var(--wrapper-bg);
-          position: relative;
-        }
-
-        .skills-container::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 1px;
-          background: var(--wrapper-border);
-        }
-
-        .skill-category {
-          background: var(--work-item-bg);
-          backdrop-filter: blur(20px);
-          padding: 50px;
-          margin-bottom: 40px;
-          border-radius: 25px;
-          transition: all 0.4s ease;
-          border: 1px solid var(--work-item-border);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .skill-category::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(59, 130, 246, 0.05));
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .skill-category:hover::before {
-          opacity: 1;
-        }
-
-        .skill-category:hover {
-          transform: translateY(-10px);
-          box-shadow: var(--work-item-hover-shadow);
-          border-color: var(--work-item-hover-border);
-        }
-
-        .skill-category h2 {
-          color: var(--text-color);
-          font-size: 32px;
-          margin-bottom: 40px;
-          text-align: center;
-          position: relative;
-          font-weight: 700;
-          background: linear-gradient(135deg, #ffffff, #a855f7);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .skill-category h2::after {
+        /* Glow behind orbit */
+        .orbit-container::before {
           content: '';
           position: absolute;
-          bottom: -15px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 80px;
-          height: 4px;
-          background: var(--back-to-top-bg);
-          border-radius: 2px;
+          inset: 0;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+          animation: orbitGlow 4s ease-in-out infinite;
         }
 
+        @keyframes orbitGlow {
+          0%, 100% { transform: scale(1); opacity: 0.6; }
+          50%       { transform: scale(1.05); opacity: 1; }
+        }
+
+        /* Ring tracks */
+        .orbit-track {
+          position: absolute;
+          width: 340px;
+          height: 340px;
+          border: 1px dashed rgba(168,85,247,0.2);
+          border-radius: 50%;
+          animation: trackSpin 40s linear infinite;
+        }
+
+        .orbit-track-2 {
+          width: 390px;
+          height: 390px;
+          border-style: solid;
+          border-color: rgba(168,85,247,0.1);
+          animation-duration: 60s;
+          animation-direction: reverse;
+        }
+
+        @keyframes trackSpin {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+
+        /* Center logo */
+        .orbit-center {
+          position: absolute;
+          width: 90px;
+          height: 90px;
+          background: linear-gradient(135deg, #7c3aed, #a855f7);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.1em;
+          font-weight: 900;
+          color: white;
+          z-index: 10;
+          box-shadow: 0 0 30px rgba(168,85,247,0.6), 0 0 60px rgba(124,58,237,0.3);
+          animation: centerPulse 3s ease-in-out infinite;
+          font-family: 'Poppins', sans-serif;
+          letter-spacing: 1px;
+        }
+
+        @keyframes centerPulse {
+          0%, 100% { box-shadow: 0 0 30px rgba(168,85,247,0.6), 0 0 60px rgba(124,58,237,0.3); }
+          50%       { box-shadow: 0 0 50px rgba(168,85,247,0.8), 0 0 90px rgba(124,58,237,0.5); }
+        }
+
+        /* Orbiting skill nodes */
+        .orbit-wrapper {
+          position: absolute;
+          width: 340px;
+          height: 340px;
+          border-radius: 50%;
+          animation: orbitSpin 20s linear infinite;
+        }
+
+        @keyframes orbitSpin {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+
+        .orbit-skill {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+          /* Counter-rotate label so it stays upright */
+          animation: counterSpin 20s linear infinite;
+        }
+
+        @keyframes counterSpin {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(-360deg); }
+        }
+
+        .orbit-skill-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: rgba(10,0,20,0.9);
+          border: 2px solid rgba(168,85,247,0.45);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2em;
+          box-shadow: 0 0 15px rgba(168,85,247,0.3);
+          transition: box-shadow 0.3s ease;
+        }
+
+        .orbit-skill-icon:hover {
+          box-shadow: 0 0 25px rgba(168,85,247,0.7);
+          border-color: rgba(168,85,247,0.8);
+        }
+
+        .orbit-skill-label {
+          font-size: 9px;
+          font-weight: 700;
+          color: #c084fc;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          white-space: nowrap;
+          text-shadow: 0 0 8px rgba(168,85,247,0.6);
+        }
+
+        /* ===== SKILL CATEGORY CARDS ===== */
         .skills-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 35px;
+          grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+          gap: 28px;
+          max-width: 1100px;
+          margin: 0 auto;
         }
 
-        .skill-item {
-          background: var(--skill-item-bg);
-          backdrop-filter: blur(10px);
-          padding: 25px;
-          border-radius: 15px;
-          transition: all 0.3s ease;
-          border: 1px solid var(--skill-item-border);
+        .skill-cat-card {
+          background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(168,85,247,0.05));
+          border: 1px solid rgba(168,85,247,0.2);
+          border-radius: 20px;
+          padding: 30px;
+          transition: all 0.4s ease;
           position: relative;
           overflow: hidden;
+          backdrop-filter: blur(12px);
         }
 
-        .skill-item::before {
-          content: "";
+        .skill-cat-card::before {
+          content: '';
           position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(59, 130, 246, 0.1));
+          inset: 0;
+          border-radius: inherit;
+          background: linear-gradient(135deg, rgba(168,85,247,0.07), transparent);
           opacity: 0;
           transition: opacity 0.3s ease;
         }
 
-        .skill-item:hover::before {
-          opacity: 1;
+        .skill-cat-card:hover::before { opacity: 1; }
+
+        .skill-cat-card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(168,85,247,0.45);
+          box-shadow: 0 0 35px rgba(168,85,247,0.2), 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .skill-item:hover {
-          transform: translateY(-5px);
-          border-color: var(--skill-item-hover-border);
-          box-shadow: var(--skill-item-hover-shadow);
+        .skill-cat-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 24px;
+          position: relative;
+          z-index: 1;
         }
 
-        .skill-item h3 {
-          color: #94bcff;
-          font-size: 22px;
-          margin-bottom: 20px;
+        .skill-cat-icon {
+          font-size: 1.6em;
+          filter: drop-shadow(0 0 6px rgba(168,85,247,0.5));
+        }
+
+        .skill-cat-title {
+          font-size: 1.1em;
+          font-weight: 700;
+          background: linear-gradient(135deg, #fff, #c084fc);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        /* Skill rows */
+        .skill-rows {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .skill-row {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .skill-row-top {
           display: flex;
           justify-content: space-between;
           align-items: center;
+        }
+
+        .skill-row-name {
+          font-size: 0.9em;
           font-weight: 600;
-          z-index: 1;
-          position: relative;
+          color: #c4b5fd;
         }
 
-        .skill-percentage {
-          font-size: 14px;
-          color: var(--secondary-accent);
+        .skill-row-meta {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .skill-badge {
+          font-size: 11px;
+          font-weight: 600;
+          color: #8b5cf6;
+          background: rgba(139,92,246,0.1);
+          border: 1px solid rgba(139,92,246,0.25);
+          border-radius: 50px;
+          padding: 2px 10px;
+        }
+
+        .skill-pct {
+          font-size: 12px;
           font-weight: 700;
-          background: var(--skill-percentage-bg);
-          backdrop-filter: blur(10px);
-          padding: 6px 12px;
-          border-radius: 15px;
-          border: 1px solid var(--skill-percentage-border);
+          color: #a855f7;
         }
 
-        .progress-bar {
-          height: 12px;
-          background: var(--progress-bar-bg);
-          border-radius: 6px;
-          overflow: hidden;
+        /* Progress track */
+        .skill-bar-track {
+          height: 8px;
+          background: rgba(168,85,247,0.12);
+          border-radius: 4px;
+          overflow: visible;
           position: relative;
-          margin-top: 15px;
-          z-index: 1;
         }
 
-        .progress-bar::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
+        .skill-bar-fill {
           height: 100%;
-          width: var(--progress-width, 0%);
-          background: linear-gradient(135deg, #a855f7, #3b82f6, #06b6d4);
-          transition: width 1.5s ease-in-out;
-          border-radius: 6px;
-          z-index: 1;
+          width: 0;
+          border-radius: 4px;
+          background: linear-gradient(90deg, #7c3aed, #a855f7, #c084fc);
+          transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          box-shadow: 0 0 10px rgba(168,85,247,0.5);
         }
 
-        .progress-bar::after {
+        /* Shine */
+        .skill-bar-fill::after {
           content: '';
           position: absolute;
           top: 0;
           left: -50%;
           height: 100%;
           width: 50%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.4),
-            transparent
-          );
-          animation: shine 2.5s infinite;
-          border-radius: 6px;
-          z-index: 2;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+          animation: barShine 2.5s ease-in-out infinite 0.5s;
+          border-radius: inherit;
         }
 
-        @keyframes shine {
-          0% { left: -50%; }
-          100% { left: 100%; }
+        @keyframes barShine {
+          0%   { left: -50%; }
+          100% { left: 150%; }
         }
 
-        .skill-level {
-          font-size: 13px;
-          color: var(--subtitle-color);
-          margin-top: 10px;
-          font-style: italic;
-          font-weight: 500;
-          z-index: 1;
-          position: relative;
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+          .orbit-container { width: 320px; height: 320px; }
+          .orbit-track { width: 270px; height: 270px; }
+          .orbit-track-2 { width: 310px; height: 310px; }
+          .orbit-wrapper { width: 270px; height: 270px; }
+          .skills-grid { grid-template-columns: 1fr; }
         }
 
-        .back-to-top {
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          background: var(--back-to-top-bg);
-          color: white;
-          border: none;
-          border-radius: 50%;
-          width: 60px;
-          height: 60px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: var(--back-to-top-shadow);
-          z-index: 1000;
-          font-size: 20px;
-        }
-
-        .back-to-top:hover {
-          transform: translateY(-5px) scale(1.1);
-          box-shadow: var(--back-to-top-hover-shadow);
-        }
-
-        @media (max-width: 768px) {
-          .h-text h1 {
-            font-size: 2.5em;
-          }
-
-          .skills-container {
-            padding: 60px 20px;
-          }
-
-          .skill-category {
-            padding: 35px 25px;
-          }
-
-          .skills-grid {
-            grid-template-columns: 1fr;
-            gap: 25px;
-          }
+        @media (max-width: 600px) {
+          .skills-section { padding: 70px 5%; }
+          .orbit-container { width: 280px; height: 280px; }
+          .orbit-track { width: 230px; height: 230px; }
+          .orbit-track-2 { width: 270px; height: 270px; }
+          .orbit-wrapper { width: 230px; height: 230px; }
+          .orbit-center { width: 70px; height: 70px; font-size: 0.9em; }
+          .orbit-skill-icon { width: 38px; height: 38px; font-size: 1em; }
         }
       `}</style>
 
-      <header>
-        <section className="h-text">
-          <h1>Technical Arsenal</h1>
-          <p>Mastering cutting-edge technologies in artificial intelligence and machine learning</p>
-          <button id="scrollButton" onClick={scrollToContent}>
-            View AI Skills
-          </button>
-        </section>
-      </header>
+      <section id="reach4" className="skills-section">
+        <div className="skills-header">
+          <div className="neon-tag">✦ Technical Arsenal</div>
+          <h2>Skills & Expertise</h2>
+          <p>Mastering cutting-edge technologies in AI, ML, and web development</p>
+        </div>
 
-      <div id="reach4" ref={skillsRef} className="skills-container" data-section="skills">
-        {[
-          {
-            category: 'Machine Learning & AI',
-            skills: [
-              { name: 'Python', level: 'Expert Level', value: 90 },
-              { name: 'TensorFlow/Keras', level: 'Advanced Level', value: 85 },
-              { name: 'Scikit-learn', level: 'Advanced Level', value: 88 },
-              { name: 'PyTorch', level: 'Intermediate Level', value: 75 },
-            ],
-          },
-          {
-            category: 'Data Science & Analytics',
-            skills: [
-              { name: 'Pandas/NumPy', level: 'Expert Level', value: 92 },
-              { name: 'Data Visualization', level: 'Advanced Level', value: 85 },
-              { name: 'Statistical Analysis', level: 'Advanced Level', value: 80 },
-              { name: 'Feature Engineering', level: 'Advanced Level', value: 82 },
-            ],
-          },
-          {
-            category: 'Deep Learning & NLP',
-            skills: [
-              { name: 'Neural Networks', level: 'Advanced Level', value: 85 },
-              { name: 'Natural Language Processing', level: 'Advanced Level', value: 80 },
-              { name: 'Computer Vision', level: 'Intermediate Level', value: 75 },
-              { name: 'LSTM/RNN', level: 'Intermediate Level', value: 70 },
-            ],
-          },
-          {
-            category: 'Development & Deployment',
-            skills: [
-              { name: 'React/TypeScript', level: 'Advanced Level', value: 85 },
-              { name: 'Cloud Platforms (AWS/Azure)', level: 'Intermediate Level', value: 70 },
-              { name: 'Docker/MLOps', level: 'Intermediate Level', value: 72 },
-              { name: 'API Development', level: 'Intermediate Level', value: 70 },
-            ],
-          },
-        ].map((section) => (
-          <section className="skill-category" key={section.category}>
-            <h2>{section.category}</h2>
-            <div className="skills-grid">
-              {section.skills.map((skill) => (
-                <div className="skill-item" key={skill.name}>
-                  <h3>
-                    {skill.name}
-                    <span className="skill-percentage">{skill.value}%</span>
-                  </h3>
-                  <div className="progress-bar" data-progress={skill.value}>
-                    <span className="progress-label"></span>
-                  </div>
-                  <div className="skill-level">{skill.level}</div>
+        {/* ORBIT VISUALIZATION */}
+        <div className="orbit-container" ref={orbitRef}>
+          <div className="orbit-track orbit-track-2" />
+          <div className="orbit-track" />
+
+          <div className="orbit-center">YSR</div>
+
+          {/* Orbiting skill nodes */}
+          <div className="orbit-wrapper">
+            {ORBIT_SKILLS.map((skill, i) => {
+              const rad = (skill.angle * Math.PI) / 180;
+              const r = 170; // orbit radius (half of 340px)
+              const x = Math.cos(rad) * r;
+              const y = Math.sin(rad) * r;
+              return (
+                <div
+                  key={i}
+                  className="orbit-skill"
+                  style={{
+                    left: `calc(50% + ${x}px - 24px)`,
+                    top: `calc(50% + ${y}px - 24px)`,
+                  }}
+                >
+                  <div className="orbit-skill-icon">{skill.icon}</div>
+                  <span className="orbit-skill-label">{skill.label}</span>
                 </div>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+              );
+            })}
+          </div>
+        </div>
 
-      <button
-        className="back-to-top"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Back to top"
-      >
-        ↑
-      </button>
+        {/* SKILL CARDS WITH PROGRESS BARS */}
+        <div className="skills-grid" ref={skillsRef}>
+          {SKILL_DATA.map((cat, ci) => (
+            <div key={ci} className="skill-cat-card">
+              <div className="skill-cat-header">
+                <span className="skill-cat-icon">{cat.icon}</span>
+                <span className="skill-cat-title">{cat.category}</span>
+              </div>
+              <div className="skill-rows">
+                {cat.skills.map((skill, si) => (
+                  <div key={si} className="skill-row">
+                    <div className="skill-row-top">
+                      <span className="skill-row-name">{skill.name}</span>
+                      <div className="skill-row-meta">
+                        <span className="skill-badge">{skill.level}</span>
+                        <span className="skill-pct">{skill.value}%</span>
+                      </div>
+                    </div>
+                    <div className="skill-bar-track">
+                      <div
+                        className="skill-bar-fill"
+                        data-val={skill.value}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 }
