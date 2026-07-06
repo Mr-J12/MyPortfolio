@@ -14,14 +14,14 @@ const PROJECTS = [
   },
   {
     img: '622.jpg',
-    status: 'Live',
-    statusColor: '#10b981',
+    status: 'In Dev',
+    statusColor: '#b91010',
     title: 'Serenify',
     subtitle: 'Mental Healthcare Website',
     stack: ['TypeScript', 'React', 'Node.js', 'Supabase'],
     desc: 'A safe and welcoming space for mental well-being. Offers personalized therapy sessions, mood tracking, a supportive community, and comprehensive features for users on their journey to mental wellness.',
     github: 'https://github.com/Mr-J12/Serenify',
-    live: 'https://serenify-nine.vercel.app/',
+    live: null,
   },
   {
     img: '512.jpg',
@@ -47,14 +47,14 @@ const PROJECTS = [
   },
   {
     img: 'cc.png',
-    status: 'Live',
-    statusColor: '#10b981',
+    status: 'Beta',
+    statusColor: '#f59e0b',
     title: 'CCDC-X',
     subtitle: 'Car Color Detector & Counter',
     stack: ['Python', 'Streamlit', 'YOLOv8', 'Computer Vision'],
     desc: 'Pre-trained YOLOv8 model detecting car colors from images. Uses thresholding, contour detection, and color classification to achieve high accuracy in diverse lighting conditions, outputting detected colors with counts.',
     github: 'https://github.com/Mr-J12/car-color-detector',
-    live: 'https://carcolorpred.streamlit.app',
+    live: null,
   },
   {
     img: '222.jpg',
@@ -93,12 +93,12 @@ const PROJECTS = [
     img: '555.jpg',
     status: 'In Dev',
     statusColor: '#ef4444',
-    title: 'Autonomous AI Platform',
+    title: 'Omni AI',
     subtitle: 'AI Automation System',
-    stack: ['Deep Learning', 'Computer Vision', 'NLP', 'Next.js', 'PostgreSQL'],
-    desc: 'Comprehensive AI automation platform combining computer vision, NLP, and predictive analytics to automate complex workflows with intelligent decision trees, adaptive learning, and real-time performance monitoring.',
-    github: 'https://github.com/Mr-J12/AI-app',
-    live: null,
+    stack: ['Ollama', 'Ngrok', 'Python', 'Node.js'],
+    desc: 'A local AI platform enabling autonomous task execution and decision-making. Integrates advanced ML models, natural language processing, and automation frameworks for intelligent operations without cloud dependency.',
+    github: null,
+    live: 'https://omnilocal.netlify.app',
   },
 ];
 
@@ -137,7 +137,7 @@ function Projects() {
         /* ===== PROJECTS SECTION ===== */
         .projects-section {
           padding: 100px 6%;
-          background: linear-gradient(180deg, #0d001a, #0a0010 50%, #0d001a);
+          background: linear-gradient(180deg, #071a33, #06111f 50%, #071a33);
           position: relative;
         }
 
@@ -148,7 +148,7 @@ function Projects() {
           left: 0;
           right: 0;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent);
+          background: linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent);
         }
 
         .projects-header {
@@ -160,23 +160,23 @@ function Projects() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(168,85,247,0.08);
-          border: 1px solid rgba(168,85,247,0.25);
+          background: rgba(59,130,246,0.08);
+          border: 1px solid rgba(59,130,246,0.25);
           border-radius: 50px;
           padding: 6px 20px;
           font-size: 12px;
           font-weight: 700;
-          color: #a855f7;
+          color: #3b82f6;
           letter-spacing: 3px;
           text-transform: uppercase;
           margin-bottom: 16px;
-          box-shadow: 0 0 15px rgba(168,85,247,0.1);
+          box-shadow: 0 0 15px rgba(59,130,246,0.1);
         }
 
         .projects-header h2 {
           font-size: clamp(2em, 4vw, 2.8em);
           font-weight: 800;
-          background: linear-gradient(135deg, #fff, #c084fc, #8b5cf6);
+          background: linear-gradient(135deg, #fff, #93c5fd, #2563eb);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -184,7 +184,7 @@ function Projects() {
         }
 
         .projects-header p {
-          color: #8e80b0;
+          color: #8fb4e8;
           font-size: 1.05em;
         }
 
@@ -199,8 +199,8 @@ function Projects() {
 
         /* ===== PROJECT CARD ===== */
         .proj-card {
-          background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(168,85,247,0.05));
-          border: 1px solid rgba(168,85,247,0.2);
+          background: linear-gradient(135deg, rgba(29,78,216,0.1), rgba(59,130,246,0.05));
+          border: 1px solid rgba(59,130,246,0.2);
           border-radius: 22px;
           overflow: hidden;
           transition: all 0.45s ease;
@@ -216,7 +216,7 @@ function Projects() {
           position: absolute;
           inset: 0;
           border-radius: inherit;
-          background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(192,132,252,0.05));
+          background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(147,197,253,0.05));
           opacity: 0;
           transition: opacity 0.35s ease;
           z-index: 0;
@@ -226,8 +226,8 @@ function Projects() {
 
         .proj-card:hover {
           transform: translateY(-12px) scale(1.01);
-          border-color: rgba(168,85,247,0.55);
-          box-shadow: 0 0 50px rgba(168,85,247,0.25), 0 30px 60px rgba(0,0,0,0.5);
+          border-color: rgba(59,130,246,0.55);
+          box-shadow: 0 0 50px rgba(59,130,246,0.25), 0 30px 60px rgba(0,0,0,0.5);
         }
 
         /* Image wrapper */
@@ -258,7 +258,7 @@ function Projects() {
           left: 0;
           right: 0;
           height: 80px;
-          background: linear-gradient(transparent, rgba(10,0,20,0.9));
+          background: linear-gradient(transparent, rgba(6,17,31,0.9));
         }
 
         /* Status badge */
@@ -288,7 +288,7 @@ function Projects() {
         .proj-title {
           font-size: 1.2em;
           font-weight: 800;
-          background: linear-gradient(135deg, #fff, #c084fc);
+          background: linear-gradient(135deg, #fff, #93c5fd);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -298,7 +298,7 @@ function Projects() {
 
         .proj-subtitle {
           font-size: 0.82em;
-          color: #a855f7;
+          color: #3b82f6;
           font-weight: 600;
           margin-bottom: 12px;
           letter-spacing: 0.5px;
@@ -313,33 +313,33 @@ function Projects() {
         }
 
         .proj-tag {
-          background: rgba(168,85,247,0.12);
-          border: 1px solid rgba(168,85,247,0.25);
+          background: rgba(59,130,246,0.12);
+          border: 1px solid rgba(59,130,246,0.25);
           border-radius: 50px;
           padding: 3px 11px;
           font-size: 11px;
           font-weight: 600;
-          color: #c084fc;
+          color: #93c5fd;
           letter-spacing: 0.3px;
           transition: all 0.3s ease;
         }
 
         .proj-card:hover .proj-tag {
-          border-color: rgba(168,85,247,0.45);
-          background: rgba(168,85,247,0.18);
-          box-shadow: 0 0 8px rgba(168,85,247,0.2);
+          border-color: rgba(59,130,246,0.45);
+          background: rgba(59,130,246,0.18);
+          box-shadow: 0 0 8px rgba(59,130,246,0.2);
         }
 
         .proj-desc {
           font-size: 0.88em;
-          color: #8e80b0;
+          color: #8fb4e8;
           line-height: 1.7;
           margin-bottom: 20px;
           flex: 1;
           transition: color 0.3s ease;
         }
 
-        .proj-card:hover .proj-desc { color: #b3a4d6; }
+        .proj-card:hover .proj-desc { color: #a8c7f0; }
 
         /* Links */
         .proj-links {
@@ -376,27 +376,27 @@ function Projects() {
         .proj-link:hover::before { left: 100%; }
 
         .proj-link-gh {
-          background: rgba(30,20,50,0.9);
-          color: #e0d4ff;
-          border: 1px solid rgba(168,85,247,0.3);
+          background: rgba(8,24,48,0.9);
+          color: #dbeafe;
+          border: 1px solid rgba(59,130,246,0.3);
         }
 
         .proj-link-gh:hover {
-          border-color: rgba(168,85,247,0.6);
-          color: #c084fc;
-          box-shadow: 0 0 18px rgba(168,85,247,0.3);
+          border-color: rgba(59,130,246,0.6);
+          color: #93c5fd;
+          box-shadow: 0 0 18px rgba(59,130,246,0.3);
           transform: translateY(-2px);
         }
 
         .proj-link-live {
-          background: linear-gradient(135deg, #7c3aed, #a855f7);
+          background: linear-gradient(135deg, #1d4ed8, #3b82f6);
           color: white;
           border: none;
         }
 
         .proj-link-live:hover {
           opacity: 0.9;
-          box-shadow: 0 0 25px rgba(168,85,247,0.5);
+          box-shadow: 0 0 25px rgba(59,130,246,0.5);
           transform: translateY(-2px);
           color: white;
         }
@@ -447,14 +447,16 @@ function Projects() {
                 </div>
                 <p className="proj-desc">{p.desc}</p>
                 <div className="proj-links">
-                  <a
-                    href={p.github}
-                    className="proj-link proj-link-gh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    📂 GitHub
-                  </a>
+                  {p.github && (
+                    <a
+                      href={p.github}
+                      className="proj-link proj-link-gh"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      📂 GitHub
+                    </a>
+                  )}
                   {p.live && (
                     <a
                       href={p.live}

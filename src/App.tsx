@@ -9,6 +9,16 @@ import './App.css';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [calmTheme, setCalmTheme] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem('theme-mode') === 'calm';
+  });
+
+  useEffect(() => {
+    const themeMode = calmTheme ? 'calm' : 'glow';
+    document.documentElement.dataset.themeMode = themeMode;
+    localStorage.setItem('theme-mode', themeMode);
+  }, [calmTheme]);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -99,7 +109,7 @@ function App() {
 
   return (
     <>
-      <nav style={{ background: scrolled ? 'rgba(10,0,20,0.95)' : 'rgba(10,0,20,0.6)' }}>
+      <nav style={{ background: scrolled ? 'rgba(6,17,31,0.95)' : 'rgba(6,17,31,0.6)' }}>
         <div className="logo">Yashwant Singh Rawat</div>
         <div className="menu">
           <a href="#home" id="nav-home">Home</a>
@@ -107,7 +117,19 @@ function App() {
           <a href="#work" id="nav-work">Work</a>
           <a href="#contact" id="nav-contact">Contact</a>
         </div>
-        <button className="theme-toggle" aria-label="Settings">⚡</button>
+        <button
+          className="theme-toggle"
+          type="button"
+          aria-label={`Switch to ${calmTheme ? 'glow' : 'calm'} theme`}
+          aria-pressed={calmTheme}
+          title={`Switch to ${calmTheme ? 'glow' : 'calm'} theme`}
+          onClick={() => setCalmTheme(current => !current)}
+        >
+          <span className="theme-toggle-track" aria-hidden="true">
+            <span className="theme-toggle-thumb" />
+          </span>
+          <span className="theme-toggle-text">{calmTheme ? 'Calm' : 'Glow'}</span>
+        </button>
       </nav>
 
       <div id="home"><Home /></div>

@@ -5,7 +5,7 @@ function Footer() {
       <style>{`
         /* ===== FOOTER ===== */
         .footer {
-          background: linear-gradient(180deg, #0d001a, #080012);
+          background: linear-gradient(180deg, #071a33, #080012);
           padding: 80px 6% 40px;
           position: relative;
           overflow: hidden;
@@ -18,7 +18,7 @@ function Footer() {
           left: 0;
           right: 0;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(168,85,247,0.6), transparent);
+          background: linear-gradient(90deg, transparent, rgba(59,130,246,0.6), transparent);
         }
 
         /* Background glow blob */
@@ -27,7 +27,7 @@ function Footer() {
           position: absolute;
           width: 500px;
           height: 300px;
-          background: radial-gradient(ellipse, rgba(124,58,237,0.1) 0%, transparent 70%);
+          background: radial-gradient(ellipse, rgba(29,78,216,0.1) 0%, transparent 70%);
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
@@ -47,23 +47,23 @@ function Footer() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(168,85,247,0.08);
-          border: 1px solid rgba(168,85,247,0.25);
+          background: rgba(59,130,246,0.08);
+          border: 1px solid rgba(59,130,246,0.25);
           border-radius: 50px;
           padding: 6px 20px;
           font-size: 12px;
           font-weight: 700;
-          color: #a855f7;
+          color: #3b82f6;
           letter-spacing: 3px;
           text-transform: uppercase;
           margin-bottom: 20px;
-          box-shadow: 0 0 15px rgba(168,85,247,0.1);
+          box-shadow: 0 0 15px rgba(59,130,246,0.1);
         }
 
         .footer-title {
           font-size: clamp(1.8em, 3.5vw, 2.6em);
           font-weight: 800;
-          background: linear-gradient(135deg, #fff, #c084fc, #8b5cf6);
+          background: linear-gradient(135deg, #fff, #93c5fd, #2563eb);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -73,7 +73,7 @@ function Footer() {
 
         .footer-subtitle {
           font-size: 1em;
-          color: #7c6fa0;
+          color: #7fa6d9;
           line-height: 1.7;
           margin-bottom: 50px;
         }
@@ -92,10 +92,10 @@ function Footer() {
           align-items: center;
           gap: 10px;
           padding: 14px 26px;
-          background: rgba(168,85,247,0.08);
-          border: 1px solid rgba(168,85,247,0.22);
+          background: rgba(59,130,246,0.08);
+          border: 1px solid rgba(59,130,246,0.22);
           border-radius: 50px;
-          color: #c4b5fd;
+          color: #bfdbfe;
           text-decoration: none;
           font-weight: 600;
           font-size: 14px;
@@ -110,7 +110,7 @@ function Footer() {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(168,85,247,0.12), rgba(192,132,252,0.08));
+          background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(147,197,253,0.08));
           opacity: 0;
           transition: opacity 0.3s ease;
           border-radius: inherit;
@@ -120,7 +120,7 @@ function Footer() {
 
         .social-link:hover {
           transform: translateY(-5px);
-          color: #e0d4ff;
+          color: #dbeafe;
         }
 
         /* Individual hover glows */
@@ -130,8 +130,8 @@ function Footer() {
         }
 
         .social-link.github:hover {
-          border-color: rgba(168,85,247,0.7);
-          box-shadow: 0 0 25px rgba(168,85,247,0.3), 0 10px 30px rgba(0,0,0,0.4);
+          border-color: rgba(59,130,246,0.7);
+          box-shadow: 0 0 25px rgba(59,130,246,0.3), 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .social-link.resume:hover {
@@ -151,13 +151,13 @@ function Footer() {
         .footer-divider {
           width: 100%;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent);
+          background: linear-gradient(90deg, transparent, rgba(59,130,246,0.3), transparent);
           margin: 0 0 28px;
         }
 
         .footer-bottom {
           font-size: 13px;
-          color: #4a3d6a;
+          color: #3b5b87;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -166,11 +166,11 @@ function Footer() {
         }
 
         .footer-heart {
-          color: #a855f7;
+          color: #3b82f6;
           animation: heartbeat 1.8s ease-in-out infinite;
           display: inline-block;
           font-size: 14px;
-          text-shadow: 0 0 8px rgba(168,85,247,0.6);
+          text-shadow: 0 0 8px rgba(59,130,246,0.6);
         }
 
         @keyframes heartbeat {
@@ -216,7 +216,7 @@ function Footer() {
 
             {/* GitHub */}
             <a
-              href="https://github.com/Mr-J12"
+              href="https://github.com/YashwantSR12"
               className="social-link github"
               target="_blank"
               rel="noopener noreferrer"
@@ -246,8 +246,6 @@ function Footer() {
 
           <div className="footer-bottom">
             <span>© 2025 Yashwant Singh Rawat</span>
-            <span>•</span>
-            <span>Made with <span className="footer-heart">♥</span> & a lot of Python</span>
           </div>
         </div>
       </footer>

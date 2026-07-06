@@ -29,11 +29,33 @@ function About() {
 
   const experiences = [
     {
+      role: 'Data Science and ML Intern',
+      company: 'Infyntrek Systemes',
+      period: 'May 2026 – Present',
+      icon: '🤖',
+      color: '#3b82f6',
+      points: [
+        'Developed and deployed a machine learning-based movie recommendation system using a large-scale movie dataset to generate personalized recommendations based on user preferences and viewing patterns.',
+        'Performed data cleaning, preprocessing, feature engineering, and exploratory data analysis on movie metadata and user interaction datasets to improve recommendation quality and model performance.',
+      ],
+    },
+    {
+      role: 'Data Analyst  Intern',
+      company: 'Innovexis',
+      period: 'Apr 2026 – Present',
+      icon: '📈',
+      color: '#2563eb',
+      points: [
+        'Analyzed large-scale datasets using Python, SQL, and Excel to extract meaningful insights and support data-driven decision-making and performed data cleaning, preprocessing, and feature engineering to improve data quality and analytical accuracy.',
+        'Created interactive dashboards and visualizations using Power BI to monitor KPIs and present trends effectively and conducted exploratory data analysis (EDA) and evaluated data patterns using statistical and analytical techniques',
+      ],
+    },
+    {
       role: 'Data Science Intern',
       company: 'Null Class',
       period: 'Oct 2025 – Nov 2025',
       icon: '📊',
-      color: '#a855f7',
+      color: '#60a5fa',
       points: [
         'Developed and deployed a predictive ML model — car color prediction & nationality detection with 80% accuracy.',
         'Engineered features and performed extensive data cleaning/preprocessing on large-scale datasets; visualized model performance using evaluation metrics.',
@@ -44,7 +66,7 @@ function About() {
       company: 'Suvidha Foundation',
       period: 'Sept 2025 – Oct 2025',
       icon: '🔬',
-      color: '#8b5cf6',
+      color: '#1d4ed8',
       points: [
         'Completed a research internship focused on Large Language Models (LLMs) and modern transformer architectures (encoder-only, decoder-only, encoder-decoder).',
         'Strengthened conceptual foundations in deep learning–based language systems.',
@@ -53,9 +75,9 @@ function About() {
     {
       role: 'Graphics Designer',
       company: 'AIEC Society (IITM)',
-      period: 'Aug 2025 – Present',
+      period: 'Aug 2025 – June 2026',
       icon: '🎨',
-      color: '#c084fc',
+      color: '#93c5fd',
       points: [
         'Designed graphics, event posters, and social media creatives for the society.',
         'Ensured brand consistency and visual appeal across various platforms.',
@@ -66,7 +88,7 @@ function About() {
       company: 'Nexverse Society (IITM)',
       period: 'Oct 2024 – Apr 2025',
       icon: '🎬',
-      color: '#818cf8',
+      color: '#3b82f6',
       points: [
         'Collaborated with the team to conceptualize and execute video projects from start to finish.',
         'Managed and organized video assets, ensuring a streamlined post-production workflow.',
@@ -77,7 +99,7 @@ function About() {
       company: 'IITM',
       period: 'May 2025 – Jun 2025',
       icon: '📽️',
-      color: '#a78bfa',
+      color: '#2563eb',
       points: [
         'Edited and produced engaging video content for institute events and promotional activities.',
         'Collaborated with teams for scripting, visuals, and post-production work.',
@@ -91,7 +113,7 @@ function About() {
         /* ===== ABOUT / EXPERIENCE SECTION ===== */
         .about-section {
           padding: 100px 6%;
-          background: linear-gradient(180deg, #0a0010, #0d001a 50%, #0a0010);
+          background: linear-gradient(180deg, #06111f, #071a33 50%, #06111f);
           position: relative;
         }
 
@@ -102,7 +124,7 @@ function About() {
           left: 0;
           right: 0;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent);
+          background: linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent);
         }
 
         .about-header {
@@ -114,23 +136,23 @@ function About() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(168,85,247,0.08);
-          border: 1px solid rgba(168,85,247,0.25);
+          background: rgba(59,130,246,0.08);
+          border: 1px solid rgba(59,130,246,0.25);
           border-radius: 50px;
           padding: 6px 20px;
           font-size: 12px;
           font-weight: 700;
-          color: #a855f7;
+          color: #60a5fa;
           letter-spacing: 3px;
           text-transform: uppercase;
           margin-bottom: 16px;
-          box-shadow: 0 0 15px rgba(168,85,247,0.1);
+          box-shadow: 0 0 15px rgba(59,130,246,0.1);
         }
 
         .about-header h2 {
           font-size: clamp(2em, 4vw, 2.8em);
           font-weight: 800;
-          background: linear-gradient(135deg, #fff, #c084fc, #8b5cf6);
+          background: linear-gradient(135deg, #fff, #93c5fd, #3b82f6);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -138,7 +160,7 @@ function About() {
         }
 
         .about-header p {
-          color: #8e80b0;
+          color: #9bb7e5;
           font-size: 1.05em;
           max-width: 550px;
           margin: 0 auto;
@@ -159,7 +181,7 @@ function About() {
           top: 0;
           bottom: 0;
           width: 2px;
-          background: linear-gradient(180deg, #7c3aed, #a855f7, #c084fc, transparent);
+          background: linear-gradient(180deg, #1d4ed8, #3b82f6, #60a5fa, transparent);
           border-radius: 1px;
         }
 
@@ -178,20 +200,20 @@ function About() {
           width: 18px;
           height: 18px;
           border-radius: 50%;
-          background: linear-gradient(135deg, #7c3aed, #a855f7);
-          box-shadow: 0 0 15px rgba(168,85,247,0.6);
-          border: 3px solid #0a0010;
+          background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+          box-shadow: 0 0 15px rgba(59,130,246,0.6);
+          border: 3px solid #06111f;
           z-index: 1;
           transition: box-shadow 0.3s ease;
         }
 
         .exp-card:hover::before {
-          box-shadow: 0 0 25px rgba(168,85,247,0.9);
+          box-shadow: 0 0 25px rgba(59,130,246,0.9);
         }
 
         .exp-inner {
-          background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(168,85,247,0.05));
-          border: 1px solid rgba(168,85,247,0.2);
+          background: linear-gradient(135deg, rgba(29,78,216,0.1), rgba(59,130,246,0.05));
+          border: 1px solid rgba(59,130,246,0.2);
           border-radius: 18px;
           padding: 28px 30px;
           position: relative;
@@ -207,7 +229,7 @@ function About() {
           left: 0;
           width: 4px;
           height: 100%;
-          background: linear-gradient(180deg, var(--exp-color, #a855f7), transparent);
+          background: linear-gradient(180deg, var(--exp-color, #3b82f6), transparent);
           border-radius: 4px 0 0 4px;
           opacity: 0.7;
         }
@@ -216,7 +238,7 @@ function About() {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(168,85,247,0.06), transparent);
+          background: linear-gradient(135deg, rgba(59,130,246,0.06), transparent);
           opacity: 0;
           transition: opacity 0.3s ease;
           border-radius: inherit;
@@ -225,8 +247,8 @@ function About() {
         .exp-card:hover .exp-inner::after { opacity: 1; }
 
         .exp-card:hover .exp-inner {
-          border-color: rgba(168,85,247,0.5);
-          box-shadow: 0 0 35px rgba(168,85,247,0.2), 0 15px 40px rgba(0,0,0,0.4);
+          border-color: rgba(59,130,246,0.5);
+          box-shadow: 0 0 35px rgba(59,130,246,0.2), 0 15px 40px rgba(0,0,0,0.4);
           transform: translateX(6px);
         }
 
@@ -243,13 +265,13 @@ function About() {
           font-size: 1.8em;
           margin-bottom: 10px;
           display: block;
-          filter: drop-shadow(0 0 6px rgba(168,85,247,0.5));
+          filter: drop-shadow(0 0 6px rgba(59,130,246,0.5));
         }
 
         .exp-role {
           font-size: 1.2em;
           font-weight: 700;
-          background: linear-gradient(135deg, #fff, #c084fc);
+          background: linear-gradient(135deg, #fff, #93c5fd);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -260,20 +282,20 @@ function About() {
 
         .exp-company {
           font-size: 0.95em;
-          color: #a855f7;
+          color: #60a5fa;
           font-weight: 600;
           position: relative;
           z-index: 1;
         }
 
         .exp-period {
-          background: rgba(168,85,247,0.1);
-          border: 1px solid rgba(168,85,247,0.25);
+          background: rgba(59,130,246,0.1);
+          border: 1px solid rgba(59,130,246,0.25);
           border-radius: 50px;
           padding: 4px 14px;
           font-size: 12px;
           font-weight: 600;
-          color: #c084fc;
+          color: #93c5fd;
           white-space: nowrap;
           flex-shrink: 0;
           align-self: flex-start;
@@ -291,7 +313,7 @@ function About() {
 
         .exp-points li {
           font-size: 0.93em;
-          color: #9d93ba;
+          color: #a8c0ea;
           line-height: 1.75;
           padding-left: 20px;
           position: relative;
@@ -303,14 +325,14 @@ function About() {
           content: '▸';
           position: absolute;
           left: 0;
-          color: #a855f7;
+          color: #3b82f6;
           font-size: 12px;
           top: 2px;
-          text-shadow: 0 0 8px rgba(168,85,247,0.6);
+          text-shadow: 0 0 8px rgba(59,130,246,0.6);
         }
 
         .exp-card:hover .exp-points li {
-          color: #c4b5fd;
+          color: #dbeafe;
         }
 
         /* ===== RESPONSIVE ===== */
